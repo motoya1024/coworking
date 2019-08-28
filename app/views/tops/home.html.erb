@@ -20,8 +20,8 @@
     <h2>ミーティングスペース予約 ログイン</h2>
     <div class="col-md-8 col-md-offset-2">
       <div class="row">
-        <%= form_with(scope: '#', url: '#', local: true) do |f| %>
-    
+        <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+        
           <%= f.label :メールアドレス, class: "label-login" %>
           <%= f.email_field :email, class: 'form-control' %>
     
@@ -34,6 +34,9 @@
           <% end %>
           <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
         <% end %>
+        <p>
+          ユーザー登録がまだの場合は<%= link_to "こちら", signup_path %>
+        </p>
       </div>
     </div>
   </div>

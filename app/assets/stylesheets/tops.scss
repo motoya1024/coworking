@@ -1,0 +1,29 @@
+/* home jumbotron */
+
+.jumbotron-extend-1 {
+    height: 35vh;
+}
+
+.jumbotron-extend-2 {
+    height: 50vh;
+}
+
+/* home form */
+
+.jumbotron-extend-2 {
+  .label-login {
+  margin-top: 5px;
+  float: left;
+  }
+}
+
+.jumbotron-extend-2 {
+  .checkbox-login {
+    float: left;
+    width: auto;
+    margin-left: 25px;
+    span {
+      font-weight: normal;
+    }
+  }
+}
