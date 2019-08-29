@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meeting_on: 2019-08-29
+  started_at: 2019-08-29 06:52:28
+  finished_at: 2019-08-29 06:52:28
+  telmail_name: MyString
+  user: one
+
+two:
+  meeting_on: 2019-08-29
+  started_at: 2019-08-29 06:52:28
+  finished_at: 2019-08-29 06:52:28
+  telmail_name: MyString
+  user: two
