@@ -1,11 +1,25 @@
 /* home jumbotron */
 
 .jumbotron-extend-1 {
-    height: 35vh;
+  height: 35vh;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .jumbotron-extend-2 {
-    height: 50vh;
+  height: 45vh;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 40px;
+  .prog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* home form */
