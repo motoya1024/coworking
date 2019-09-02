@@ -24,10 +24,56 @@
   </span>
 </div>
 
-<table>
-    
+<table border="1" style="border-collapse: collapse">
+ <thead>
+  <tr>
+   <th><%= l(@first_day, format: :long_mini) %></th>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+  </tr>
+ </thead>
 </table>
-
+<table border="1" style="border-collapse: collapse">
+ <tbody>
+ <tr>
+  <th>
+   <div>
+    <ul class="time_field">
+     <% @time_number.each do |time_number| %>
+     <li><%= time_number %>:00</li>
+     <% end %>
+    </ul>
+   </div>
+  </th>
+  <!-- 7回繰り返す -->
+  <td>
+   <div>
+    <ul>
+     <li>
+      <ul>
+       <li>
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <ul>
+     <li>
+      <ul>
+       <li>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
 
 
 
