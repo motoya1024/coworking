@@ -8,7 +8,6 @@ User.create!(name: "わいサンプルさん",
              email: "sample@email.com",
              password: "password",
              password_confirmation: "password")
-User.create!(name: "test",
-             email: "test@email.com",
-             password: "test",
-             password_confirmation: "test")
+
+Operation.create!(seat: 5,
+                  all_seat: 30)
