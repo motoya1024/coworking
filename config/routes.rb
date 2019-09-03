@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
-  resources :users
-  end
+  resources :users do
+    get "change_show", on: :member
+  end 
+end

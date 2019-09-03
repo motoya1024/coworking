@@ -12,7 +12,18 @@
 <p>※受付締切：当日の2時間前まで</p>
 <p>※受付開始：90日前の0時から</p>
 
+
 <p>予約日時を選択してください。</p>
+<div class="resavation_week_form">
+  <%= render 'resavation_week' %>
+</div>
+<div class="input-group date datepicker">
+  <input type="hidden">
+  <span class="input-group-addon resavation_calendar">
+    <button type="button" class="resavation_calendar_btn">カレンダー</button>
+  </span>
+</div>
+
 <table>
     
 </table>
@@ -23,3 +34,28 @@
 
 <h5>◯◯様　予約状況一覧</h5>
 
+<script>
+
+$(function(){
+  $('.datepicker').datetimepicker({
+    format : "YYYY/MM/DD",
+    defaultDate : new Date(),
+    icons: {
+      previous: "fa fa-arrow-left",
+      next: "fa fa-arrow-right"
+    }
+  });
+  
+   $('.datepicker').on('dp.change', function (e) {
+       var date = String(e.date).split(" ")[3]+"-"+(new Date(e.date).getMonth() + 1)+"-"+String(e.date).split(" ")[2];
+         $.ajax({
+                url:'/users/<%= current_user.id %>/change_show',
+                type:'GET',
+                data:{
+                    'prev':date
+                }
+            });
+    });
+});    
+    
+</script>
