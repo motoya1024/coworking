@@ -1,32 +1,32 @@
-<% if @operation.seat <= 6 %>
+<% if   %>
   <div class="progress">
     <div class="progress-bar progress-bar-primary progress-bar-striped active prog"
          role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%">
       20%
     </div>
   </div>
-<% elsif @operation.seat <= 12 %>
+<% elsif @operation.seat <= @operation.all_seat %>
   <div class="progress">
     <div class="progress-bar progress-bar-info progress-bar-striped active prog"
          role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
       40%
     </div>
   </div>
-<% elsif @operation.seat <= 18 %>
+<% elsif @operation.seat <= @operation.all_seat %>
   <div class="progress">
     <div class="progress-bar progress-bar-success progress-bar-striped active prog"
          role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
       60%
     </div>
   </div>
-<% elsif @operation.seat <= 24 %>
+<% elsif @operation.seat <= @operation.all_seat %>
   <div class="progress">
     <div class="progress-bar progress-bar-warnig progress-bar-striped active prog"
          role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
       80%
     </div>
   </div>
-<% else @operation.seat <= 30 %>
+<% else @operation.seat <= @operation.all_seat %>
   <div class="progress">
     <div class="progress-bar progress-bar-danger progress-bar-striped active prog"
          role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
