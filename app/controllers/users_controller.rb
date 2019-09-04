@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   
   def show
     @first_day = Date.current
+    @time_number = (1..24).to_a
   end
   
   def change_show 
