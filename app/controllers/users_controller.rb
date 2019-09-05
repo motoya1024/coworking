@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.paginate(page: params[:page], per_page: 20)
+    @users = User.paginate(page: params[:page], per_page: 20).search(params[:search])
   end
   
   def show
@@ -25,13 +25,28 @@ class UsersController < ApplicationController
   end
   
   def create
+    @user = User.new(user_params)
+    if @user.save
+      log_in @user
+      flash[:success] = "ユーザーの新規作成に成功しました。"
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
   
-  def edit
+  def edit_info
     @user = User.find(params[:id])
   end
   
-  def update
+  def update_info
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "#{@user.name}の基本情報を更新しました。"
+    else
+      flash[:danger] = "#{@user.name}の更新は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
+    end
+    redirect_to users_url
   end
   
   def destroy
