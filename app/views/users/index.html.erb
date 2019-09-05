@@ -14,7 +14,7 @@
 </div>
 
 <div class="col-md-10 col-md-offset-1">
-  <%= will_paginate %>
+  <div class="pagi"><%= will_paginate %></div>
   <table class="table table-condensed table-hover" id="table-users">
     <thead>
       <tr>
@@ -31,17 +31,19 @@
         <td class="center"><%= user.name %></td>
         <td class="center"><%= user.email %></td>
         <td class="center"><%= link_to "表示", edit_user_path(user), class: "btn btn-info" %></td>
-        <td class="center">
-          <%= link_to "基本情報編集", edit_user_path(user), remote: true, class: "btn btn-success" %>
-        </td>
-        <td class="center">
-          <%= link_to "削除", user, method: :delete,
-              data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
-        </td>
+        <% if current_user.admin? && !current_user?(user) %>
+          <td class="center">
+            <%= link_to "基本情報編集", edit_info_user_path(user), remote: true, class: "btn btn-success" %>
+          </td>
+          <td class="center">
+            <%= link_to "削除", user, method: :delete,
+                data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </table>
-  <%= will_paginate %>
+  <div class="pagi"><%= will_paginate %></div>
 </div>
 
 <!--モーダルウインドウ表示-->
