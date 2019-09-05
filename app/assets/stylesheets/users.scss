@@ -10,7 +10,7 @@
   margin-right:30px;
 }
 
-.prev,.next{
+.resavation_prev,.resavation_next{
   font-size:20px;
   padding:5px 10px 5px 10px;
   border:1px solid #BBBBBB;
@@ -49,4 +49,21 @@
 
 .search p {
     font-size: x-large;
+}
+
+#table-users {
+  td {
+    vertical-align: middle;
+  }  
+}
+
+.pagi {
+  font-size: initial;
+}
+
+/* _edit_info */
+
+.button {
+  margin-top: 10px;
+  text-align: center;
 }
