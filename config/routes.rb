@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   
   resources :users do
     get "change_show", on: :member
+    get 'edit_info', on: :member
+    patch 'update_info', on: :member
   end 
 end
