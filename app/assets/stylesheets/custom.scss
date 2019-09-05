@@ -92,6 +92,35 @@ li .nav-right:hover {
 }
 
 /* show page */
-ul.time_field {
+ul.time-field {
   list-style: none;
+  padding: 0;
+  li {
+    height: 74px;
+    width: 39px;
+    
+  }
+}
+
+.week-day-th {
+  height: 35px;
+  width: 40px;
+}
+
+.week-day-td {
+  height: 35px;
+  width: 69px;
+}
+
+.time-schedule {
+  width: 69px;
+  padding: 0;
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.time-schedule-cell {
+  height: 37px;
 }

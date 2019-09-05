@@ -23,13 +23,14 @@
     <button type="button" class="resavation_calendar_btn">カレンダー</button>
   </span>
 </div>
-
+<p>予約できます</p>
+<p>予約できません</p>
 <table border="1" style="border-collapse: collapse">
  <thead>
   <tr>
-   <th></th>
+   <th class="week-day-th"></th>
    <% @week_day.each do |week_day| %>
-    <td><%= week_day %></td>
+    <td class="week-day-td"><%= week_day %></td>
    <% end %>
   </tr>
  </thead>
@@ -39,7 +40,7 @@
  <tr>
   <th>
    <div>
-    <ul class="time_field">
+    <ul class="time-field">
      <% @time_number.each do |time_number| %>
        <li><%= time_number %>:00</li>
      <% end %>
@@ -47,25 +48,24 @@
    </div>
   </th>
   <!-- 7回繰り返す -->
-  <td>
-   <div>
-    <ul>
-     <li>
-      <ul>
-       <li>
-       </li>
-      </ul>
-     </li>
-    </ul>
-    <ul>
-     <li>
-      <ul>
-       <li>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </div>
+  <td class="time-schedule">
+   <ul>
+    <% 48.times do |i| %>
+    <li class="time-schedule-cell"></li>
+    <% end %>
+   </ul>
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
   </td>
   <!-- 7回繰り返す -->
  </tr>
