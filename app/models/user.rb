@@ -10,7 +10,9 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  VALID_PASSWORD_REGEX = /\A(?=.*?[A-Z])[a-zA-Z\d]+\z/
+  validates :password, presence: true, length: { minimum: 6, maximum: 20 },
+                    format: { with: VALID_PASSWORD_REGEX }
   
   # 渡された文字列のハッシュ値を返します。
   def User.digest(string)
@@ -44,5 +46,13 @@ class User < ApplicationRecord
   # ユーザーのログイン情報を破棄します。
   def forget
     update_attribute(:remember_digest, nil)
+  end
+  
+  def self.search(search)
+    if search
+      where(['name LIKE ?', "%#{search}%"])
+    else
+      all
+    end
   end
 end

@@ -3,27 +3,9 @@
 <div class="container">
   <div class="center jumbotron jumbotron-extend-1">
     <h2>コワーキングスペース利用状況</h2>
-    <p>
-      更新日時：<%= Date.current.strftime("%Y/%m/%d %H:%M") %><br>
-      稼働状況：<%= "７０％(ただの文字列)" %>
-    </p>
-    <div class="progress">
-      <div class="progress-bar progress-bar-primary progress-bar-striped active prog" role="progressbar" style="width:20%">
-        20%
-      </div>
-      <div class="progress-bar progress-bar-info progress-bar-striped active prog" role="progressbar" style="width:20%">
-        40%
-      </div>
-      <div class="progress-bar progress-bar-success progress-bar-striped active prog" role="progressbar" style="width:20%">
-        60%
-      </div>
-      <div class="progress-bar progress-bar-warning progress-bar-striped active prog" role="progressbar" style="width:20%">
-        80%
-      </div>
-      <div class="progress-bar progress-bar-danger progress-bar-striped active prog" role="progressbar" style="width:20%">
-        100%
-      </div>
-    </div>
+    <p class="operation">更新日時：<%= l(@operation.updated_at, format: :long) %></p>
+    <p class="operation">稼働状況：利用席数<%= @operation.seat %> / 総席数<%= @operation.all_seat %></p>
+    <%= render 'tops/operation' %>
   </div>
 </div>
 
@@ -46,6 +28,9 @@
           <% end %>
           <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
         <% end %>
+        <p>
+          ユーザー登録がまだの場合は<%= link_to "こちら", signup_path %>
+        </p>
       </div>
     </div>
   </div>

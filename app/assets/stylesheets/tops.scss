@@ -1,21 +1,27 @@
 /* home jumbotron */
 
 .jumbotron-extend-1 {
-  height: 35vh;
+  height: 38vh;
   width: 70%;
   margin: 0 auto;
+  .operation {
+    font-weight: bold;
+  }
 }
 
 .jumbotron-extend-2 {
-  height: 45vh;
+  height: 48vh;
   width: 70%;
   margin: 0 auto;
   margin-top: 10px;
 }
 
+
+
 .progress {
-  height: 40px;
+  height: 5vh;
   .prog {
+    font-size: 1.7em;
     display: flex;
     justify-content: center;
     align-items: center;

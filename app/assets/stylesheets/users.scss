@@ -1,3 +1,69 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//user show
+
+.resavation_week_form{
+  float:left;
+  margin-right:30px;
+}
+
+.resavation_prev,.resavation_next{
+  font-size:20px;
+  padding:5px 10px 5px 10px;
+  border:1px solid #BBBBBB;
+  border-radius:5px;
+}
+
+.resavation_week{
+  margin:0px 10px 0px 10px;
+}
+
+.resavation_calendar{
+  background-color:#CCCCCC;
+  width:100px;
+}
+
+.resavation_calendar_btn{
+  background-color:#CCCCCC;
+  border:1px solid #CCCCCC;
+}
+
+.input-group-addon:last-child{
+  border-radius: 5px;
+}
+
+.space{
+  height:500px;
+}
+
+/* user index */
+
+.search {
+    width: 30%;
+    margin-left: auto;
+    margin-bottom: 30px;
+}
+
+.search p {
+    font-size: x-large;
+}
+
+#table-users {
+  td {
+    vertical-align: middle;
+  }  
+}
+
+.pagi {
+  font-size: initial;
+}
+
+/* _edit_info */
+
+.button {
+  margin-top: 10px;
+  text-align: center;
+}

@@ -1,3 +1,107 @@
-<% provide(:title, 'ユーザー詳細') %>
+<% provide(:title, 'ミーティングスペース予約画面') %>
 
-<h1>ユーザー詳細</h1>
+<h1>ミーティングスペース予約画面</h1>
+<h2>ミーティングスペース予約はこちら</h2>
+<p>
+[手順]<br/>
+1.ご希望の月日、時間の開始時間の白枠をクリックします。<br/>
+　（グレーの枠は予約が入ってます）<br/>
+2.予約内容が表示されますので、利用時間を選び「予約する」をクリック。<br/>
+</p>
+<p>※現在予約できる期間：2019/08/31(土) 〜 2019/11/29(金)</p>
+<p>※受付締切：当日の2時間前まで</p>
+<p>※受付開始：90日前の0時から</p>
+
+
+<p>予約日時を選択してください。</p>
+<div class="resavation_week_form">
+  <%= render 'resavation_week' %>
+</div>
+<div class="input-group date datepicker">
+  <input type="hidden">
+  <span class="input-group-addon resavation_calendar">
+    <button type="button" class="resavation_calendar_btn">カレンダー</button>
+  </span>
+</div>
+
+<table border="1" style="border-collapse: collapse">
+ <thead>
+  <tr>
+   <th><%= l(@first_day, format: :long_mini) %></th>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+  </tr>
+ </thead>
+</table>
+<table border="1" style="border-collapse: collapse">
+ <tbody>
+ <tr>
+  <th>
+   <div>
+    <ul class="time_field">
+     <% @time_number.each do |time_number| %>
+     <li><%= time_number %>:00</li>
+     <% end %>
+    </ul>
+   </div>
+  </th>
+  <!-- 7回繰り返す -->
+  <td>
+   <div>
+    <ul>
+     <li>
+      <ul>
+       <li>
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <ul>
+     <li>
+      <ul>
+       <li>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+
+
+
+
+<h5>◯◯様　予約状況一覧</h5>
+
+<script>
+
+$(function(){
+  $('.datepicker').datetimepicker({
+    format : "YYYY/MM/DD",
+    defaultDate : new Date(),
+    icons: {
+      previous: "fa fa-arrow-left",
+      next: "fa fa-arrow-right"
+    }
+  });
+  
+   $('.datepicker').on('dp.change', function (e) {
+       var date = String(e.date).split(" ")[3]+"-"+(new Date(e.date).getMonth() + 1)+"-"+String(e.date).split(" ")[2];
+         $.ajax({
+                url:'/users/<%= current_user.id %>/change_show',
+                type:'GET',
+                data:{
+                    'prev':date
+                }
+            });
+    });
+});    
+    
+</script>

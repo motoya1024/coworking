@@ -1,0 +1,3 @@
+<span class="resavation_prev"><%= link_to "<",change_show_user_path(current_user,prev:@first_day.ago(7.days)),remote:true %></span>
+<span class="resavation_week"><%= l(@first_day, format: :long) %>~<%= l(@first_day.since(6.days).to_date, format: :long) %></span>
+<span class="resavation_next"><%= link_to ">",change_show_user_path(current_user,next:@first_day.since(7.days)),remote:true %></span>
