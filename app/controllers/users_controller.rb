@@ -63,6 +63,12 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def edit_reservation
+  end
+  
+  def update_reservation
+  end
+  
   private
   
     def user_params
