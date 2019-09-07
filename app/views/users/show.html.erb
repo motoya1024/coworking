@@ -51,7 +51,7 @@
   <td class="time-schedule">
    <ul>
     <% 48.times do |i| %>
-    <li class="time-schedule-cell"></li>
+    <li class="time-schedule-cell"><%= link_to "    ", edit_change_request_approval_user_path, remote: true %></li>
     <% end %>
    </ul>
   </td>
