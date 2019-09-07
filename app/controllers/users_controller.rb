@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   
   def index
     @users = User.paginate(page: params[:page], per_page: 20).search(params[:search])
+    @reservation = Reservation.where(id: params[:id])
   end
   
   def show
@@ -48,14 +49,18 @@ class UsersController < ApplicationController
   def update_info
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "#{@user.name}の基本情報を更新しました。"
+      flash[:success] = "#{@user.name}様の基本情報を更新しました。"
     else
-      flash[:danger] = "#{@user.name}の更新は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
+      flash[:danger] = "#{@user.name}様の更新は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
     end
     redirect_to users_url
   end
   
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "#{@user.name}様の情報を削除しました。"
+    redirect_to users_url
   end
   
   private
