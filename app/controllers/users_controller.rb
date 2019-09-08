@@ -12,6 +12,12 @@ class UsersController < ApplicationController
   def show
     @first_day = Date.current
     @time_number = (1..24).to_a
+    @week_day = []
+    i = 0
+    while (i <= 6) do
+      @week_day.push(l(@first_day + i, format: :long_mini))
+      i += 1
+    end
   end
   
   def change_show 
@@ -55,6 +61,12 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = "#{@user.name}様の情報を削除しました。"
     redirect_to users_url
+  end
+  
+  def edit_reservation
+  end
+  
+  def update_reservation
   end
   
   private
