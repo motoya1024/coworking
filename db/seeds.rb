@@ -1,7 +1,7 @@
 User.create!(name: "わい管理者や！",
              email: "admin@email.com",
-             password: "password",
-             password_confirmation: "password",
+             password: "Password",
+             password_confirmation: "Password",
              admin: true)
 
 Operation.create!(seat: 5,
@@ -10,7 +10,7 @@ Operation.create!(seat: 5,
 60.times do |n|
   name  = Faker::Name.name
   email = "sample-#{n+1}@email.com"
-  password = "password"
+  password = "Password"
   User.create!(name: name,
                email: email,
                password: password,
