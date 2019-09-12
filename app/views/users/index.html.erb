@@ -30,7 +30,24 @@
       <tr>
         <td class="center"><%= user.name %></td>
         <td class="center"><%= user.email %></td>
-        <td class="center"><%= link_to "表示", edit_user_reservation_path(user, @reservation), remote: true, class: "btn btn-info" %></td>
+        <td class="center">
+          <div class="reservation-list">
+            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#date-index<%= user.id %>" aria-expanded="true">
+              表示
+            </button>
+            <div id="date-index<%= user.id %>" class="collapse in" aria-expanded="true">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div>
+                    <p><%= "開始時間" %></p><p><%=  user.updated_at %></p>
+                    <p><%= "終了時間" %></p><p><%=  user.created_at %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        
         <% if current_user.admin? && !current_user?(user) %>
           <td class="center">
             <%= link_to "基本情報編集", edit_info_user_path(user), remote: true, class: "btn btn-success" %>

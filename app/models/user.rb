@@ -48,6 +48,7 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
   
+  # ユーザーを絞り込み検索します。
   def self.search(search)
     if search
       where(['name LIKE ?', "%#{search}%"])
@@ -55,4 +56,12 @@ class User < ApplicationRecord
       all
     end
   end
+  
+  # 開始時間と終了時間を持ったユーザーを取得する。
+  scope :yoyaku, ->{
+    joins(:reservations).
+    where.not(reservations: { startred_at: nil, finished_at: nil})
+  }
+  
+  
 end
