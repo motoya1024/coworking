@@ -25,16 +25,9 @@
 </div>
 <p>予約できます</p>
 <p>予約できません</p>
-<table border="1" style="border-collapse: collapse">
- <thead>
-  <tr>
-   <th class="week-day-th"></th>
-   <% @week_day.each do |week_day| %>
-    <td class="week-day-td"><%= week_day %></td>
-   <% end %>
-  </tr>
- </thead>
-</table>
+<div class="resavation_week_form_table">
+  <%= render 'reservation_week_tabale_th' %>
+</div>
 <table border="1" style="border-collapse: collapse">
  <tbody>
  <tr>
