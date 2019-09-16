@@ -15,14 +15,15 @@
           <%= form_with(model: @reservation, url: update_reservation_user_path, local: true, method: :patch) do |f| %>
 
             <%= f.label "お名前" %>
-            <%= f.text_field :name, class: 'form-control' %>
+            <%= f.text_field :user_id, class: 'form-control' %>
       
             <%= f.label "予約日" %>
-            <%= f.email_field :email, class: 'form-control' %>
+            <%= f.date_field :meeting_on, class: 'form-control' %>
       
             <%= f.label "予約時間" %>
-            <%= f.password_field :password, class: 'form-control' %>
-
+            <%= f.time_field :started_at, class: 'form-control' %>
+            ~
+            <%= f.time_field :finished_at, class: 'form-control' %>
 
             <div class="button">
               <%= f.submit yield(:button_text), class: "btn btn-primary" %>

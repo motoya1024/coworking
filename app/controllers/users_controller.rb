@@ -27,7 +27,13 @@ class UsersController < ApplicationController
        day = params[:next]
     end  
     if day
-       @first_day = day.to_date
+      @first_day = day.to_date
+      @week_day = []
+      i = 0
+      while (i <= 6) do
+        @week_day.push(l(@first_day + i, format: :long_mini))
+        i += 1
+      end
     end
   end
   
@@ -67,6 +73,7 @@ class UsersController < ApplicationController
   end
   
   def update_reservation
+    redirect_to user_url
   end
   
   private
