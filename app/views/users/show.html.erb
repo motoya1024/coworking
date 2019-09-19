@@ -23,18 +23,15 @@
     <button type="button" class="resavation_calendar_btn">カレンダー</button>
   </span>
 </div>
-
+<p>予約できます</p>
+<p>予約できません</p>
 <table border="1" style="border-collapse: collapse">
  <thead>
   <tr>
-   <th><%= l(@first_day, format: :long_mini) %></th>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
+   <th class="week-day-th"></th>
+   <% @week_day.each do |week_day| %>
+    <td class="week-day-td"><%= week_day %></td>
+   <% end %>
   </tr>
  </thead>
 </table>
@@ -43,34 +40,35 @@
  <tr>
   <th>
    <div>
-    <ul class="time_field">
+    <ul class="time-field">
      <% @time_number.each do |time_number| %>
-     <li><%= time_number %>:00</li>
+       <li><%= time_number %>:00</li>
      <% end %>
     </ul>
    </div>
   </th>
   <!-- 7回繰り返す -->
-  <td>
-   <div>
-    <ul>
-     <li>
-      <ul>
-       <li>
-       </li>
-      </ul>
-     </li>
-    </ul>
-    <ul>
-     <li>
-      <ul>
-       <li>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </div>
+  <td class="time-schedule">
+   <ul>
+    <% 48.times do |i| %>
+    <li class="time-schedule-cell"><%= link_to '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, edit_reservation_user_url, remote: true %></li>
+    <div id="edit_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+    <% end %>
+   </ul>
   </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <td class="time-schedule">
+  </td>
+  <!-- 7回繰り返す -->
  </tr>
  </tbody>
 </table>

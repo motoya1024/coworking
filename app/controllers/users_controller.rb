@@ -6,12 +6,17 @@ class UsersController < ApplicationController
   
   def index
     @users = User.paginate(page: params[:page], per_page: 20).search(params[:search])
-    @reservation = Reservation.where(id: params[:id])
   end
   
   def show
     @first_day = Date.current
     @time_number = (1..24).to_a
+    @week_day = []
+    i = 0
+    while (i <= 6) do
+      @week_day.push(l(@first_day + i, format: :long_mini))
+      i += 1
+    end
   end
   
   def change_show 
@@ -57,9 +62,16 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def edit_reservation
+  end
+  
+  def update_reservation
+  end
+  
   private
   
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+    
 end

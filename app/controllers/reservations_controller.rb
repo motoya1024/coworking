@@ -1,5 +1,8 @@
 class ReservationsController < ApplicationController
   
+  def index
+  end
+  
   def new
   end
   
@@ -19,7 +22,7 @@ class ReservationsController < ApplicationController
     else
       flash[:danger] = "#{@user.name}様の更新は失敗しました。"
     end
-      redirect_to :edit
+      redirect_to users_url
   end
   
   def destroy
