@@ -2,6 +2,7 @@
 
 <h1>　　　　　</h1>
 
+<!-- 検索機能 -->
 <div class="search">
   <%= form_tag(users_path, method: :get) do %>
     <div class="input-group">
@@ -14,7 +15,7 @@
 </div>
 
 <div class="col-md-10 col-md-offset-1">
-  <div class="pagi"><%= will_paginate %></div>
+  <%= will_paginate %>
   <table class="table table-condensed table-hover" id="table-users">
     <thead>
       <tr>
@@ -31,24 +32,45 @@
         <td class="center"><%= user.name %></td>
         <td class="center"><%= user.email %></td>
         <td class="center">
-          <div class="reservation-list">
-            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#date-index<%= user.id %>" aria-expanded="true">
-              表示
-            </button>
-            <div id="date-index<%= user.id %>" class="collapse in" aria-expanded="true">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <div>
-                    <p><%= "開始時間" %></p><p><%=  user.updated_at %></p>
-                    <p><%= "終了時間" %></p><p><%=  user.created_at %></p>
-                  </div>
-                </div>
+          <!-- アコーディオンスイッチ-->
+          <button type="button" class="btn btn-primary btn-sm collapsed" 
+          data-toggle="collapse" data-target="#meeting<%= user.id %>" aria-expanded="false">
+            表示
+          </button>
+          <!-- アコーディオン本体-->
+          <div id="meeting<%= user.id %>" class="collapse" aria-expanded="false">
+            <div class="panel panel-default">
+              <div class="panel-body ">
+                <table class="table table-bordered table-condensed table-hover">
+                  <thead>
+                    <tr>
+                      <th class="center"><%= "開始時間" %> / <%= "終了時間" %></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="center">
+                        <!-- 予約繰り返し処理 -->
+                        <% user.reservations.each do |reservation| %>
+                          <!-- MS予約情報モーダル -->
+                          <li>
+                            <%= link_to l(reservation.started_at, format: :long),
+                                edit_user_reservation_path(user, reservation), remote: true %> / 
+                            <%= link_to l(reservation.finished_at, format: :long),
+                                edit_user_reservation_path(user, reservation), remote: true %>
+                          </li>
+                        <% end %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </td>
         
         <% if current_user.admin? && !current_user?(user) %>
+          <!-- ユーザー情報モーダル -->
           <td class="center">
             <%= link_to "基本情報編集", edit_info_user_path(user), remote: true, class: "btn btn-success" %>
           </td>
@@ -60,10 +82,10 @@
       </tr>
     <% end %>
   </table>
-  <div class="pagi"><%= will_paginate %></div>
+  <%= will_paginate %>
 </div>
 
-<!--ユーザー情報モーダルウインドウ表示-->
+<!-- ユーザー情報モーダル表示 -->
 <div id="edit-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<!--MS予約情報モーダルウインドウ表示-->
+<!-- MS予約情報モーダル表示 -->
 <div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

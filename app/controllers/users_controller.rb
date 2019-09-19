@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   
   def index
     @users = User.paginate(page: params[:page], per_page: 20).search(params[:search])
-    @reservations = Reservation.all
   end
   
   def show
@@ -62,4 +61,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+    
 end
