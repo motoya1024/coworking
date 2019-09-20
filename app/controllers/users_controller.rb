@@ -10,14 +10,24 @@ class UsersController < ApplicationController
   end
   
   def show
+    @user = User.find(params[:id])
     @first_day = Date.current
-    @time_number = (1..24).to_a
+    @time_number = (0..23).to_a
     @week_day = []
+    @times24 = []
+    minutes = ["00","30"]
     i = 0
     while (i <= 6) do
       @week_day.push(l(@first_day + i, format: :long_mini))
       i += 1
     end
+    while(i <= 23) do
+      minutes.each { |minute|
+      @times24.push(i.to_s + ":" + minute)
+      }
+      i += 1
+    end
+    @login_user_reservations = Reservation.where(user_id: params[:id])
   end
   
   def change_show 
@@ -69,16 +79,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
-  def edit_reservation
-  end
-  
-  def update_reservation
-    redirect_to user_url
-  end
-  
   private
   
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+    
 end

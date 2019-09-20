@@ -43,9 +43,10 @@
   <!-- 7回繰り返す -->
   <td class="time-schedule">
    <ul>
-    <% 48.times do |i| %>
-    <li class="time-schedule-cell"><%= link_to 'test'.html_safe, edit_reservation_user_url, remote: true %></li>
-    <div id="edit_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+    <% @times24.each do |i| %>
+    <li class="time-schedule-cell"><%= link_to 'test', new_user_reservation_url(@user), remote: true, id: @user.id %>
+    </li>
+    <div id="new_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
     <% end %>
    </ul>
   </td>
@@ -69,7 +70,21 @@
 
 
 
-<h5>◯◯様　予約状況一覧</h5>
+<h5><%= @user.name %>様　予約状況一覧</h5>
+<% @login_user_reservations.each do |login_user_reservation| %>
+  <table>
+      <tr>
+          <td><%= l(login_user_reservation.meeting_on, format: :long_mini) %></td>
+          <td><%= l(login_user_reservation.started_at, format: :time) %>〜</td>
+          <td><%= l(login_user_reservation.finished_at, format: :time) %></td>
+      </tr>
+      <tr>
+          <td><%= link_to '削除', user_reservation_url(@user,login_user_reservation), remote: true %></td>
+          <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+      </tr>
+  </table>
+<% end %>
+
 
 <script>
 
