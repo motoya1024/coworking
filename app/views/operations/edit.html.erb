@@ -18,12 +18,12 @@
   <div class="center">
     <h3>【<%= Date.today %>】</h3>
     <h3>利用席数を入力してください。</h3>
-    <h3>
       <%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
-
+      <h3>
       <%= f.label :利用席数 %>
       <%= f.number_field :seat, value: @operation.seat %>/<%= @operation.all_seat %>席
       <input type="reset" value="リセット">
+      </h3>
       <p><%= f.submit "更新", class: "btn btn-primary" %>
       <%= link_to 'キャンセル', user_path(current_user) ,class:"btn btn-primary"%>
       </p>
