@@ -12,24 +12,21 @@
     <div class="modal-body">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <%= form_with(model: @reservation, url: user_reservation_path(user, reservation), local: true, method: :post) do |f| %>
+          <%= form_with(model: @reservation, url: user_reservation_path(@user, @reservation), local: true, method: :patch) do |f| %>
 
             <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-control' %>
-      
-            <%= f.label "日付" %>
-            <%= f.email_field :meeting_on, class: 'form-control' %>
-      
+            <p><%= @user.name %></p>
+
             <%= f.label "開始時間" %>
-            <%= f.password_field :started_at, class: 'form-control ' %>
+            <%= f.datetime_field :started_at, class: 'form-control ' %>
       
             <%= f.label "終了時間" %>
-            <%= f.password_field :finished_at, class: 'form-control' %>
+            <%= f.datetime_field :finished_at, class: 'form-control' %>
 
             <div class="button">
               <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-              <%= f.submit "削除", user_reservation_path(user, reservation), method: :delete,
-                data: { confirm: "#{user.name}様の予約情報を削除してよろしいですか？" }, class: "btn btn-danger" %>
+              <%= link_to "削除", user_reservation_path(@user, @reservation), method: :delete,
+                data: { confirm: "#{@user.name}様の予約情報を削除してよろしいですか？" }, class: "btn btn-danger" %>
               <button type="button" class="btn btn-default" data-dismiss="modal">
                 キャンセル
               </button>
