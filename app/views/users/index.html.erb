@@ -32,11 +32,13 @@
         <td class="center"><%= user.name %></td>
         <td class="center"><%= user.email %></td>
         <td class="center">
-          <!-- アコーディオンスイッチ-->
-          <button type="button" class="btn btn-primary btn-sm collapsed" 
-          data-toggle="collapse" data-target="#meeting<%= user.id %>" aria-expanded="false">
-            表示
-          </button>
+          <% if user.reservations.present? %>
+            <!-- アコーディオンスイッチ-->
+            <button type="button" class="btn btn-primary btn-sm collapsed" 
+            data-toggle="collapse" data-target="#meeting<%= user.id %>" aria-expanded="false">
+              表示
+            </button>
+          <% end %>
           <!-- アコーディオン本体-->
           <div id="meeting<%= user.id %>" class="collapse" aria-expanded="false">
             <div class="panel panel-default">
