@@ -18,12 +18,12 @@
             <%= f.text_field :user_id, class: 'form-control', value: @user.id %>
       
             <%= f.label "予約日" %>
-            <%= f.date_field :meeting_on, class: 'form-control' %>
+            <%= f.date_field :meeting_on, class: 'form-control', value: @week_day %>
       
             <%= f.label "予約時間" %>
-            <%= f.select :started_at, @times24 %>
+            <%= f.select :started_at, @times24, selected: @selected_started_at %>
             ~
-            <%= f.select :finished_at, @times24 %>
+            <%= f.select :finished_at, @times24, selected: @selected_started_at %>
 
             <div class="button">
               <%= f.submit yield(:button_text), class: "btn btn-primary" %>

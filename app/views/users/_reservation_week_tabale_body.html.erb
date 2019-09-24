@@ -1,0 +1,27 @@
+<!-- 7回繰り返す -->
+<table border="1" style="border-collapse: collapse">
+ <tbody>
+ <tr>
+  <th>
+   <div>
+    <ul class="time-field">
+     <% @time_number.each do |time_number| %>
+       <li><%= time_number %>:00</li>
+     <% end %>
+    </ul>
+   </div>
+  </th>
+  <% @week_day_origin.each do |week_day| %>
+  <td class="time-schedule">
+   <ul>
+    <% @times24test.each do |time| %>
+    <li class="time-schedule-cell"><%= link_to 'test', new_user_reservation_url(@user, :started_at => time,:week_day => week_day), remote: true %>
+    </li>
+    <div id="new_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+    <% end %>
+   </ul>
+  </td>
+  <% end %>
+  </tr>
+ </tbody>
+</table>

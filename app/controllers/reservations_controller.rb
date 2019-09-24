@@ -15,6 +15,8 @@ class ReservationsController < ApplicationController
       }
       i += 1
     end
+    @selected_started_at = params[:started_at]
+    @week_day = params[:week_day]
   end
   
   def create
@@ -42,11 +44,25 @@ class ReservationsController < ApplicationController
   end
   
   def show
+    @user = User.find(params[:user_id])
+    @reservation = Reservation.find(params[:id])
+    @times24 = []
+    i = 0
+    minutes = ["00","30"]
+    while(i <= 23) do
+      minutes.each { |minute|
+      @times24.push(i.to_s + ":" + minute)
+      }
+      i += 1
+    end
   end
   
   def destroy
     @user = User.find(params[:user_id])
     @reservation = Reservation.find(params[:id])
+    Reservation.find(params[:id]).destroy
+    flash[:success] = "削除しました。"
+    redirect_to user_url(@user)
   end
   
   private 

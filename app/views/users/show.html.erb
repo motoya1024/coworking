@@ -28,44 +28,10 @@
 <div class="resavation_week_form_table">
   <%= render 'reservation_week_tabale_th' %>
 </div>
-<table border="1" style="border-collapse: collapse">
- <tbody>
- <tr>
-  <th>
-   <div>
-    <ul class="time-field">
-     <% @time_number.each do |time_number| %>
-       <li><%= time_number %>:00</li>
-     <% end %>
-    </ul>
-   </div>
-  </th>
-  <!-- 7回繰り返す -->
-  <td class="time-schedule">
-   <ul>
-    <% @times24.each do |i| %>
-    <li class="time-schedule-cell"><%= link_to 'test', new_user_reservation_url(@user), remote: true, id: @user.id %>
-    </li>
-    <div id="new_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-    <% end %>
-   </ul>
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <!-- 7回繰り返す -->
- </tr>
- </tbody>
-</table>
+<div class="resavation_week_form_table_body">
+  <%= render 'reservation_week_tabale_body' %>
+</div>
+
 
 
 
