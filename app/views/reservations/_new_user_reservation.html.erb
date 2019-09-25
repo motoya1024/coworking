@@ -1,0 +1,40 @@
+<% provide(:class_text, 'edit-info') %>
+<% provide(:button_text, '予約') %>
+
+<div class="modal-dialog modal-lg modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h1 class="modal-title">予約登録</h1>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%= form_with(model: @reservation, url: user_reservations_path(@user), local: true, method: :post) do |f| %>
+
+            <%= f.label "お名前" %>
+            <%= f.text_field :telmail_name, class: 'form-control', value: @user.name, readonly: true %>
+            <%= f.hidden_field :user_id, :value => @user.id %>
+      
+            <%= f.label "予約日" %>
+            <%= f.date_field :meeting_on, class: 'form-control', value: @week_day %>
+      
+            <%= f.label "予約時間" %>
+            <%= f.select :started_at, @times24, selected: @selected_started_at %>
+            ~
+            <%= f.select :finished_at, @times24, selected: @selected_started_at %>
+
+            <div class="button">
+              <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                キャンセル
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

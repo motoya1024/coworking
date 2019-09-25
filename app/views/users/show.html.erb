@@ -25,58 +25,32 @@
 </div>
 <p>予約できます</p>
 <p>予約できません</p>
-<table border="1" style="border-collapse: collapse">
- <thead>
-  <tr>
-   <th class="week-day-th"></th>
-   <% @week_day.each do |week_day| %>
-    <td class="week-day-td"><%= week_day %></td>
-   <% end %>
-  </tr>
- </thead>
-</table>
-<table border="1" style="border-collapse: collapse">
- <tbody>
- <tr>
-  <th>
-   <div>
-    <ul class="time-field">
-     <% @time_number.each do |time_number| %>
-       <li><%= time_number %>:00</li>
-     <% end %>
-    </ul>
-   </div>
-  </th>
-  <!-- 7回繰り返す -->
-  <td class="time-schedule">
-   <ul>
-    <% 48.times do |i| %>
-    <li class="time-schedule-cell"><%= link_to '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, edit_reservation_user_url, remote: true %></li>
-    <div id="edit_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-    <% end %>
-   </ul>
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <td class="time-schedule">
-  </td>
-  <!-- 7回繰り返す -->
- </tr>
- </tbody>
-</table>
+<div class="resavation_week_form_table">
+  <%= render 'reservation_week_tabale_th' %>
+</div>
+<div class="resavation_week_form_table_body">
+  <%= render 'reservation_week_tabale_body' %>
+</div>
 
 
 
 
-<h5>◯◯様　予約状況一覧</h5>
+
+<h5><%= @user.name %>様　予約状況一覧</h5>
+<% @login_user_reservations.each do |login_user_reservation| %>
+  <table>
+      <tr>
+          <td><%= l(login_user_reservation.meeting_on, format: :long_mini) %></td>
+          <td><%= l(login_user_reservation.started_at, format: :time) %>〜</td>
+          <td><%= l(login_user_reservation.finished_at, format: :time) %></td>
+      </tr>
+      <tr>
+          <td><%= link_to '削除', user_reservation_url(@user,login_user_reservation), remote: true %></td>
+          <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+      </tr>
+  </table>
+<% end %>
+
 
 <script>
 
