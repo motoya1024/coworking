@@ -11,3 +11,13 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+          
+          
+    models:
+      operation: オペレーション
+    attributes:
+        operation:
+         all_seat: 総席数
+         seat: 利用席数
+         created_at: 作成日
+         updated_at: 更新日
