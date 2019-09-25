@@ -56,10 +56,10 @@
                         <% user.reservations.each do |reservation| %>
                           <!-- MS予約情報モーダル -->
                           <li>
-                            <%= link_to l(reservation.started_at, format: :long),
-                                edit_user_reservation_path(user, reservation), remote: true %> / 
-                            <%= link_to l(reservation.finished_at, format: :long),
-                                edit_user_reservation_path(user, reservation), remote: true %>
+                            <%= link_to "#{l(reservation.started_at, format: :short)}
+                                ~#{l(reservation.finished_at, format: :short)}",
+                                edit_user_reservation_path(user, reservation),
+                                remote: true %>
                           </li>
                         <% end %>
                       </td>

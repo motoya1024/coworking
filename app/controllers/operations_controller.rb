@@ -8,10 +8,10 @@ class OperationsController < ApplicationController
   def update
     @operation = Operation.find(1)
     if @operation.update_attributes(operation_params)
-      flash[:success] = "利用席数を#{@operation.seat}席に変更しました。"
-      redirect_to operations_edit_path
+      flash[:success] = "利用席数#{@operation.seat}席、総席数#{@operation.all_seat}席に変更しました。"
+      redirect_to operations_edit_url
     else
-      render operations_edit_path
+      render :edit
     end
   end
   
@@ -19,6 +19,6 @@ class OperationsController < ApplicationController
  private
 
     def operation_params
-      params.require(:operation).permit(:seat)
+      params.require(:operation).permit(:seat,:all_seat)
     end
 end

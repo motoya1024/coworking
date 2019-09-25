@@ -1,7 +1,7 @@
 User.create!(name: "わい管理者や！",
              email: "admin@email.com",
-             password: "Password",
-             password_confirmation: "Password",
+             password: "password",
+             password_confirmation: "password",
              admin: true)
 
 Operation.create!(seat: 5,
