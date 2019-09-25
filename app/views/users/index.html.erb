@@ -57,7 +57,7 @@
                           <!-- MS予約情報モーダル -->
                           <li>
                             <%= link_to "#{l(reservation.started_at, format: :short)}
-                                ~#{l(reservation.started_at, format: :short)}",
+                                ~#{l(reservation.finished_at, format: :short)}",
                                 edit_user_reservation_path(user, reservation),
                                 remote: true %>
                           </li>
