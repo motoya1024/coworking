@@ -17,7 +17,12 @@ class ReservationsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @reservation = Reservation.find(params[:id])
-    if  @reservation.update_attributes(reservation_params)
+    if @reservation.update_attributes(reservation_params)
+    # if reservations_invalid?
+    #   reservation_params.each do |id,item|
+    #     reservation = Reservation.find(id)
+    #     reservation.update_attributes!(item)
+    #   end
       flash[:success] = "#{@user.name}様の予約情報を更新しました。"
     else
       flash[:danger] = "#{@user.name}様の更新は失敗しました。"
