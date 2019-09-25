@@ -16,7 +16,7 @@
 <body>
   <div class="center">
     <h3>【<%= Date.current %>(<%= %w(日 月 火 水 木 金 土)[Date.today.wday]%>)】</h3>
-    <h2>利用席数を入力してください。</h2>
+    <h2>利用席数を入力してください</h2>
       <h3><%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
       <div style="display:inline-flex">
       <%= f.label :利用席数 %>
