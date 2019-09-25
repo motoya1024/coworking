@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       }
       i += 1
     end
-    @login_user_reservations = Reservation.all
+    @login_user_reservations = Reservation.where(user_id: @user.id)
   end
   
   def change_show 

@@ -15,7 +15,8 @@
           <%= form_with(model: @reservation, url: user_reservations_path(@user), local: true, method: :post) do |f| %>
 
             <%= f.label "お名前" %>
-            <%= f.text_field :user_id, class: 'form-control', value: @user.id %>
+            <%= f.text_field :telmail_name, class: 'form-control', value: @user.name, readonly: true %>
+            <%= f.hidden_field :user_id, :value => @user.id %>
       
             <%= f.label "予約日" %>
             <%= f.date_field :meeting_on, class: 'form-control', value: @week_day %>
