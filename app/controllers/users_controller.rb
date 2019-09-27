@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       }
       i += 1
     end
-    @login_user_reservations = Reservation.where(user_id: @user.id)
+    @login_user_reservations = Reservation.where(user_id: @user.id).where(meeting_on: Time.zone.today..Float::INFINITY).order(meeting_on: :asc).order(started_at: :asc)
   end
   
   def change_show 
