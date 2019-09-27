@@ -19,7 +19,7 @@
             <%= f.hidden_field :user_id, :value => @user.id %>
       
             <%= f.label "予約日" %>
-            <%= f.date_field :meeting_on, class: 'form-control', value: @week_day %>
+            <%= f.date_field :meeting_on, class: 'form-control', value: @week_day,required: true %>
       
             <%= f.label "予約時間" %>
             <%= f.select :started_at, @times24, selected: @selected_started_at %>
