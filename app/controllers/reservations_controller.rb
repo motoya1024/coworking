@@ -22,8 +22,11 @@ class ReservationsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @reservation = Reservation.new(customer_reservation_params)
-    @reservation.save
-    flash[:success] = "予約が完了しました。"
+    if @reservation.save
+      flash[:success] = "予約が完了しました。"
+    else
+      flash[:danger] = "予約ができませんでした。"
+    end
     redirect_to @user
   end
   
