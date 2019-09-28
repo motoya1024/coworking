@@ -8,7 +8,7 @@
           <% if current_user.admin? %>
             <li><%= link_to "ユーザー情報一覧", users_path %></li>
             <li><%= link_to "MS予約画面", user_path(current_user) %></li>
-            <li><%= link_to "利用状況編集", operations_edit_path(@operation) %></li>
+            <li><%= link_to "利用状況編集", operations_edit_path %></li>
           <% end %>
           <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
           </li>
