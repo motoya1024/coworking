@@ -23,18 +23,22 @@
     <button type="button" class="resavation_calendar_btn">カレンダー</button>
   </span>
 </div>
-<p>予約できます</p>
-<p>予約できません</p>
+<div class="reservation_status_list">
+  <div class="can_reservation"> 
+    <div></div>
+    <p>予約できます</p>
+  </div>
+  <div class="can_not_reservation">
+    <div></div>
+    <p>予約できません</p>
+  </div>
+</div>
 <div class="resavation_week_form_table">
   <%= render 'reservation_week_tabale_th' %>
 </div>
 <div class="resavation_week_form_table_body">
   <%= render 'reservation_week_tabale_body' %>
 </div>
-
-
-
-
 
 <h5><%= @user.name %>様　予約状況一覧</h5>
 <% @login_user_reservations.each do |login_user_reservation| %>
