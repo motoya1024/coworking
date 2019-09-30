@@ -3,17 +3,17 @@
     <%= link_to "co-ba ikebukuro", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "トップページ", root_path, class: "nav-right" %></li>
+        <li><%= link_to "TOP", root_path, class: "nav-right" %></li>
         <% if logged_in? %>
           <% if current_user.admin? %>
-            <li><%= link_to "ユーザー情報一覧", users_path %></li>
-            <li><%= link_to "MS予約画面", user_path(current_user) %></li>
-            <li><%= link_to "利用状況編集", operations_edit_path %></li>
+            <li><%= link_to "USERS", users_path, class: "nav-right" %></li>
+            <li><%= link_to "MEETING SPACE", user_path(current_user), class: "nav-right" %></li>
+            <li><%= link_to "SEAT UPDATE", operations_edit_path, class: "nav-right" %></li>
           <% end %>
-          <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+          <li><%= link_to "LOGOUT", logout_path, method: :delete, class: "nav-right" %></li>
           </li>
         <% else %>
-          <li><%= link_to "ログイン", login_path, class: "nav-right" %></li>
+          <li><%= link_to "LOGIN", login_path, class: "nav-right" %></li>
         <% end %>
       </ul>
     </nav>

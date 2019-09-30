@@ -1,29 +1,28 @@
 <% provide(:title, 'ユーザー一覧') %>
 
-<h1>　　　　　</h1>
+<h1><u>USERS</u></h1>
+<p class="center">登録されているユーザーの検索・確認・更新・削除ができます。</p>
 
 <!-- 検索機能 -->
 <div class="search">
   <%= form_tag(users_path, method: :get) do %>
     <div class="input-group">
-      <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control" %>
+      <%= text_field_tag :search, params[:search], placeholder: "KEYWORD", class: "form-control" %>
       <span class="input-group-btn">
-        <%= submit_tag '検索', name: :nil, class: "btn btn-primary" %>
+        <%= submit_tag 'SEARCH', name: :nil, class: "btn btn-primary" %>
       </span>
     </div>
   <% end %>
 </div>
 
 <div class="col-md-10 col-md-offset-1">
-  <%= will_paginate %>
-  <table class="table table-condensed table-hover" id="table-users">
+  <table class="table table-condensed table-striped table-hover" id="table-users">
     <thead>
       <tr>
-        <th class="center">氏名</th>
-        <th class="center">メールアドレス</th>
-        <th class="center">ミーティング予約状況</th>
-        <th class="center">ユーザー情報編集</th>
-        <th class="center">ユーザー削除</th>
+        <th class="center">Name</th>
+        <th class="center">Email</th>
+        <th class="center">Log</th>
+        <th class="center">Actions</th>
       </tr>
     </thead>
 
@@ -75,8 +74,6 @@
           <!-- ユーザー情報モーダル -->
           <td class="center">
             <%= link_to "基本情報編集", edit_info_user_path(user), remote: true, class: "btn btn-success" %>
-          </td>
-          <td class="center">
             <%= link_to "削除", user, method: :delete,
                 data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
           </td>
@@ -84,7 +81,7 @@
       </tr>
     <% end %>
   </table>
-  <%= will_paginate %>
+  <div class="center"><%= will_paginate %></div>
 </div>
 
 <!-- ユーザー情報モーダル表示 -->
