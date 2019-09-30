@@ -4,6 +4,7 @@
 
 
 /* show page */
+
 ul.time-field {
   list-style: none;
   padding: 0;
@@ -16,12 +17,12 @@ ul.time-field {
 
 .week-day-th {
   height: 35px;
-  width: 41px;
+  min-width: 41px;
 }
 
 .week-day-td {
   height: 35px;
-  width: 120px;
+  width:120px;
   text-align:center;
 }
 
@@ -58,9 +59,8 @@ ul.time-field {
 
 .reservation_done{
   position:absolute;
-  width:119px;
+  width:100%;
   background-color:#EEEEEE;
-  border-bottom: solid 1px #AAAAAA;
   display: flex;
   align-items: center;
 }
