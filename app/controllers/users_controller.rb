@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @operation = Operation.find(1)
     @first_day = Date.current
     set_reservation_schedule
     @login_user_reservations = Reservation.where(user_id: @user.id).where(meeting_on: Time.zone.today..Float::INFINITY).order(meeting_on: :asc).order(started_at: :asc)
