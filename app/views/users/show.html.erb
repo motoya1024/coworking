@@ -14,27 +14,31 @@
 
 
 <p>予約日時を選択してください。</p>
-<div class="resavation_week_form">
-  <%= render 'resavation_week' %>
+<div class="reservation_week_form">
+  <%= render 'reservation_week' %>
 </div>
 <div class="input-group date datepicker">
   <input type="hidden">
-  <span class="input-group-addon resavation_calendar">
-    <button type="button" class="resavation_calendar_btn">カレンダー</button>
+  <span class="input-group-addon reservation_calendar">
+    <button type="button" class="reservation_calendar_btn">カレンダー</button>
   </span>
 </div>
-<p>予約できます</p>
-<p>予約できません</p>
-<div class="resavation_week_form_table">
+<div class="reservation_status_list">
+  <div class="can_reservation"> 
+    <div></div>
+    <p>予約できます</p>
+  </div>
+  <div class="can_not_reservation">
+    <div></div>
+    <p>予約できません</p>
+  </div>
+</div>
+<div class="reservation_week_form_table">
   <%= render 'reservation_week_tabale_th' %>
 </div>
-<div class="resavation_week_form_table_body">
+<div class="reservation_week_form_table_body">
   <%= render 'reservation_week_tabale_body' %>
 </div>
-
-
-
-
 
 <h5><%= @user.name %>様　予約状況一覧</h5>
 <% @login_user_reservations.each do |login_user_reservation| %>
