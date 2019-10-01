@@ -1,27 +1,54 @@
 <!-- 7回繰り返す -->
-<table border="1" style="border-collapse: collapse">
- <tbody>
- <tr>
-  <th>
-   <div>
-    <ul class="time-field">
-     <% @time_number.each do |time_number| %>
-       <li><%= time_number %>:00</li>
-     <% end %>
-    </ul>
-   </div>
-  </th>
-  <% @week_day_origin.each do |week_day| %>
-  <td class="time-schedule">
-   <ul>
-    <% @times24test.each do |time| %>
-    <li class="time-schedule-cell"><%= link_to '', new_user_reservation_url(@user, :started_at => time,:week_day => week_day), remote: true %>
-    </li>
-    <div id="new_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-    <% end %>
-   </ul>
-  </td>
-  <% end %>
-  </tr>
+<table border="1" style="border-collapse: collapse" bordercolor="#AAAAAA">
+  <tbody>
+    <tr>
+      <th>
+        <div>
+          <ul class="time-field">
+            <% @time_number.each do |time_number| %>
+              <li><%= time_number %></li>
+            <% end %>
+          </ul>
+        </div>
+      </th>
+      <% @week_day.each do |week_day| %>
+        <td class="time-schedule">
+          <div class="top_vacant"></div>
+          <ul>
+            <% @times.each do |time| %>
+              <% datetime = Time.zone.local(week_day.year,week_day.month,week_day.day,time.hour,time.min) %> 
+              <% if datetime >= Time.current %>
+                <li class="time-schedule-cell">
+                  <%= link_to '', new_user_reservation_url(@user, :started_at => l(time,format: :shorttime),:week_day => week_day),remote:true %>
+                </li>
+              <% else %>
+                <li class="time-schedule-cell post_time"></li>
+              <% end %>
+              <div id="new_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+            <% end %>
+          </ul>
+          <% @day_reservations = @reservations.where(started_at: week_day.in_time_zone.all_day)
+          .or(@reservations.where("started_at <= ? and finished_at > ?", week_day.midnight, week_day.midnight)) %>
+          <% if @day_reservations.present? %>
+            <% @day_reservations.each do |reservation| %>
+              <% reservation_height = get_height(reservation.started_at,reservation.finished_at,week_day) %>
+              <% top_position = get_position(reservation.started_at,reservation.finished_at,week_day) %>
+              <% if current_user.admin? || (!current_user.admin && current_user.id == reservation.user_id) %>
+                <%= link_to(user_reservation_url(@user,reservation),remote:true,class: 'text-color') do %>
+                  <div class="reserved" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
+                    <%= reservation.user.name %>様</br>
+                    <%= l(reservation.started_at,format: :time) %> ~ <%= l(reservation.finished_at,format: :time) %>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="reserved" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
+                  <%= l(reservation.started_at,format: :time) %> ~ <%= l(reservation.finished_at,format: :time) %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
  </tbody>
 </table>
