@@ -20,15 +20,20 @@ module ReservationsHelper
     elsif Date.parse(finished_at.to_s) == week_day
       time = ((finished_at - week_day.midnight)/60/60)
       (time/24.to_f*1776)
+    elsif Date.parse(finished_at.to_s) > week_day && Date.parse(started_at.to_s) < week_day
+      1776
     end
   end
   
   def get_position(started_at,finished_at,week_day)
-    if Date.parse(started_at.to_s) != Date.parse(finished_at.to_s) && Date.parse(finished_at.to_s) == week_day
+    
+    if Date.parse(started_at.to_s) == Date.parse(finished_at.to_s) || Date.parse(started_at.to_s) == week_day
+       time = ((started_at - week_day.midnight)/60/60)
+       (time/24.to_f*1776) + 22 
+    elsif Date.parse(finished_at.to_s) == week_day || (Date.parse(finished_at.to_s) > week_day && Date.parse(started_at.to_s) < week_day)
       22
     else
-      time = ((started_at - Time.zone.parse(week_day.to_s))/60/60)
-      (time/24.to_f*1776) + 22 
+  
     end
   end
 end

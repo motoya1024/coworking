@@ -39,7 +39,7 @@
                <%= raw sprintf(f.datetime_select(
                                               :finished_at, 
                                               default: Time.zone.local(@week_day.to_date.year,@week_day.to_date.month,@week_day.to_date.day,
-                                                                      @selected_started_at.to_time.hour,@selected_started_at.to_time.min),
+                                                                      @selected_started_at.to_time.hour,@selected_started_at.to_time.min)+30.minutes,
                                               minute_step: 30,
                                               use_month_numbers: true, 
                                               date_separator: '%s', 

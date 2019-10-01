@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-/* show page */
+/* reservation page */
 
 ul.time-field {
   list-style: none;
@@ -24,12 +24,15 @@ ul.time-field {
   height: 35px;
   width:120px;
   text-align:center;
+  white-space:pre-wrap;
+  word-wrap: break-all；
 }
 
 .time-schedule {
   width: 120px;
   padding: 0;
   position:relative;
+  
   ul {
     list-style: none;
     padding: 0;
@@ -57,10 +60,11 @@ ul.time-field {
   color:white;
 }
 
-.reservation_done{
+.reserved{
   position:absolute;
   width:100%;
   background-color:#EEEEEE;
+  border-bottom: solid 1px #AAAAAA;
   display: flex;
   align-items: center;
 }

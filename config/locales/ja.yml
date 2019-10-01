@@ -41,8 +41,8 @@ ja:
       default: "%Y/%m/%d"
       long: "%Y年%-m月%-d日(%a)"
       middle: "%Y年%m月"
-      long_day: "%Y/%m/%d(%a)"
-      short_day: "%m/%d(%a)"
+      long_day: "%Y/%-m/%-d(%a)"
+      short_day: "%-m/%-d(%a)"
       short: "%-m/%-d"
       long_mini: "%-m月%-d日(%a)"
     month_names:
@@ -207,8 +207,8 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
-      long_day: "%Y/%m/%d(%a)"
-      short_day: "%m/%d(%a)"
+      long_day: "%Y/%-m/%-d(%a)"
+      short_day: "%-m/%-d(%a)"
       time: "%H:%M"
       shorttime : "%-H:%M"
     pm: 午後
