@@ -1,21 +1,19 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
+<div class="container">
+  <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-white mt-3 helvetica">
     <%= link_to "co-ba ikebukuro", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "TOP", root_path, class: "nav-right" %></li>
+      <ul class="nav navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item px-2"><strong><%= link_to "TOP", root_path, class: "nav-link" %></strong></li>
         <% if logged_in? %>
           <% if current_user.admin? %>
-            <li><%= link_to "USERS", users_path, class: "nav-right" %></li>
-            <li><%= link_to "MEETING SPACE", user_path(current_user), class: "nav-right" %></li>
-            <li><%= link_to "SEAT UPDATE", operations_edit_path, class: "nav-right" %></li>
+            <li  class="nav-item px-2"><strong><%= link_to "USERS", users_path, class: "nav-link" %></strong></li>
+            <li class="nav-item text-nowrap px-2"><strong><%= link_to "MEETING SPACE", user_path(current_user), class: "nav-link" %></strong></li>
+            <li class="nav-item text-nowrap px-2"><strong><%= link_to "SEAT UPDATE", operations_edit_path, class: "nav-link" %></strong></li>
           <% end %>
-          <li><%= link_to "LOGOUT", logout_path, method: :delete, class: "nav-right" %></li>
-          </li>
+          <li class="nav-item px-2"><strong><%= link_to "LOGOUT", logout_path, method: :delete, class: "nav-link" %></strong></li>
         <% else %>
-          <li><%= link_to "LOGIN", login_path, class: "nav-right" %></li>
+          <li class="nav-item px-2"><strong><%= link_to "LOGIN", login_path, class: "nav-link" %></strong></li>
         <% end %>
       </ul>
-    </nav>
-  </div>
-</header>
+  </nav>
+</div>
+
