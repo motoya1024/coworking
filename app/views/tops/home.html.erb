@@ -7,7 +7,7 @@
     <%= render 'tops/operation' %>
     <div class="row mt-5">
       <p class="operation col text-right lead"><%= @operation.seat %> 席利用中/ <%= @operation.all_seat %>席中</p>
-      <p class="operation col text-left lead"><%= l(@operation.updated_at, format: :long) %></p>
+      <p class="operation col text-left lead"><i class="far fa-clock"></i><%= l(@operation.updated_at, format: :long) %></p>
     </div>
   </div>
 </div>
