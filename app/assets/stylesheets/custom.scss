@@ -80,6 +80,20 @@ p {
   color: black;
 }
 
+/* TOP */
+.bg-light-gray {
+  background-color: Window;
+}
+
+.signup_link { 
+  text-decoration: none;
+}
+
+.signup_link:hover { 
+  text-decoration: none;
+}
+
+
 /* デバッグウインドウ */
 
 .debug_dump {
@@ -91,3 +105,4 @@ p {
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
+
