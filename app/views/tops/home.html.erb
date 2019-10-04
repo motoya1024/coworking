@@ -1,11 +1,14 @@
 <% provide(:title, "co-ba ikebukuro") %>
 
 <div class="container">
-  <div class="center jumbotron jumbotron-extend-1">
-    <h2>コワーキングスペース利用状況</h2>
-    <p class="operation">更新日時：<%= l(@operation.updated_at, format: :long) %></p>
-    <p class="operation">稼働状況：利用席数<%= @operation.seat %> / 総席数<%= @operation.all_seat %></p>
+  <div class="text-center my-5 pb-5">
+    <p class="mb-0 pt-5">混雑状況</p>
+    <h2 class="d-inline-block border-bottom border-dark mb-5">CONGESTION</h2>
     <%= render 'tops/operation' %>
+    <div class="row mt-5">
+      <p class="operation col text-right lead"><%= @operation.seat %> 席利用中/ <%= @operation.all_seat %>席中</p>
+      <p class="operation col text-left lead"><%= l(@operation.updated_at, format: :long) %></p>
+    </div>
   </div>
 </div>
 
