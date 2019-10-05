@@ -75,16 +75,18 @@
               <%= link_to(edit_info_user_path(user), remote: true, class: "btn btn-outline-primary d-block d-md-inline-block rounded-circle px-2 py-1 mx-2") do %>
                 <i class="fas fa-pen"></i>
               <% end %>
-              <%= link_to "削除", user, method: :delete,
-                  data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+              <%= link_to(user, class: "btn btn-outline-danger d-block d-md-inline-block rounded-circle px-2 py-1 mx-2", method: :delete, data: { confirm: "削除してよろしいですか？" }) do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
             <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
   </table>
 </div>
   <div class="center"><%= will_paginate %></div>
+</div>
 </div>
 
 <!-- ユーザー情報モーダル表示 -->
