@@ -85,7 +85,7 @@
       </tbody>
     </table>
   </div>
-  <div class="center"><%= will_paginate %></div>
+  <%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: "pagination pagination-lg") %>
 </div>
 
 <!-- ユーザー情報モーダル表示 -->
