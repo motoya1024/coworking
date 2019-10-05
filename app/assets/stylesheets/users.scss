@@ -23,28 +23,35 @@
 .date{
   margin-top:20px;
 }
+
 /* user index */
 
-.search {
-    width: 30%;
-    margin-left: auto;
-    margin-bottom: 30px;
+.pagination {
+  justify-content: center;
 }
 
-.search p {
-    font-size: x-large;
+.page-item .page-link {
+  color: gray;
 }
 
-#table-users {
-  td {
-    vertical-align: middle;
-  }  
+.page-item .page-link:hover {
+  color: gray;
+}
+
+.pagination .page-item.active
+.page-link {
+  color: white;
+  background-color: gray;
+  border: gray;
+}
+
+.thead-color {
+    background-color: #CCCCCC;
+    color: white;
 }
 
 
-/* _edit_info */
 
-.button {
-  margin-top: 10px;
-  text-align: center;
-}
+
+
+
