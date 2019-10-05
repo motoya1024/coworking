@@ -15,72 +15,73 @@
     <% end %>
   </div>
 
-<div class="col-md-10 col-md-offset-1">
-  <table class="table table-condensed table-striped table-hover" id="table-users">
-    <thead>
-      <tr>
-        <th class="center">Name</th>
-        <th class="center">Email</th>
-        <th class="center">Log</th>
-        <th class="center">Actions</th>
-      </tr>
-    </thead>
-
-    <% @users.each do |user| %>
-      <tr>
-        <td class="center"><%= user.name %></td>
-        <td class="center"><%= user.email %></td>
-        <td class="center">
-          <% if user.reservations.present? %>
-            <!-- アコーディオンスイッチ-->
-            <button type="button" class="btn btn-primary btn-sm collapsed" 
-            data-toggle="collapse" data-target="#meeting<%= user.id %>" aria-expanded="false">
-              表示
-            </button>
-          <% end %>
-          <!-- アコーディオン本体-->
-          <div id="meeting<%= user.id %>" class="collapse" aria-expanded="false">
-            <div class="panel panel-default">
-              <div class="panel-body ">
-                <table class="table table-bordered table-condensed table-hover">
-                  <thead>
-                    <tr>
-                      <th class="center"><%= "開始時間" %> / <%= "終了時間" %></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="center">
-                        <!-- 予約繰り返し処理 -->
-                        <% user.reservations.each do |reservation| %>
-                          <!-- MS予約情報モーダル -->
-                          <li>
-                            <%= link_to "#{l(reservation.started_at, format: :short)}
-                                ~#{l(reservation.finished_at, format: :short)}",
-                                edit_user_reservation_path(user, reservation),
-                                remote: true %>
-                          </li>
-                        <% end %>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+  <div class="table-responsive">
+    <table class="table table-striped text-nowrap" id="table-users">
+      <thead class="thead-color lead">
+        <tr>
+          <th class="center">Name</th>
+          <th class="center">Email</th>
+          <th class="center">Log</th>
+          <th class="center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="center"><%= user.name %></td>
+            <td class="center"><%= user.email %></td>
+            <td class="center">
+            <% if user.reservations.present? %>
+              <!-- アコーディオンスイッチ-->
+              <button type="button" class="btn btn-outline-success collapsed px-4" 
+                data-toggle="collapse" data-target="#meeting<%= user.id %>" aria-expanded="false">
+                表示
+              </button>
+            <% end %>
+            <!-- アコーディオン本体-->
+            <div id="meeting<%= user.id %>" class="collapse" aria-expanded="false">
+              <iv class="panel panel-default">
+                <div class="panel-body ">
+                  <table class="table table-bordered table-condensed table-hover">
+                    <thead>
+                      <tr>
+                        <th class="center"><%= "開始時間" %> / <%= "終了時間" %></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="center">
+                          <!-- 予約繰り返し処理 -->
+                          <% user.reservations.each do |reservation| %>
+                            <!-- MS予約情報モーダル -->
+                            <li>
+                              <%= link_to "#{l(reservation.started_at, format: :short)}
+                                  ~#{l(reservation.finished_at, format: :short)}",
+                                  edit_user_reservation_path(user, reservation),
+                                  remote: true %>
+                            </li>
+                          <% end %>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-        </td>
-        
-        <% if current_user.admin? && !current_user?(user) %>
+          </td>
           <!-- ユーザー情報モーダル -->
           <td class="center">
-            <%= link_to "基本情報編集", edit_info_user_path(user), remote: true, class: "btn btn-success" %>
-            <%= link_to "削除", user, method: :delete,
-                data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+            <% if current_user.admin? && !current_user?(user) %>
+              <%= link_to "基本情報編集", edit_info_user_path(user), remote: true, class: "btn btn-success" %>
+              <%= link_to "削除", user, method: :delete,
+                  data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+            <% end %>
           </td>
-        <% end %>
-      </tr>
-    <% end %>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
+</div>
   <div class="center"><%= will_paginate %></div>
 </div>
 
