@@ -16,7 +16,7 @@ gem 'turbolinks',   '~> 5'
 gem 'jbuilder',     '~> 2.5'
 
 # 日付と時間のフォーム用
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem "bootstrap4-datetime-picker-rails"
 gem 'momentjs-rails', '>= 2.9.0'
 
 gem 'font-awesome-rails', '~> 4.7.0'
