@@ -8,10 +8,10 @@
       <ul class="nav navbar-nav ml-auto mt-2 mt-lg-0">
         <li class="nav-item px-2"><strong><%= link_to "TOP", root_path, class: "nav-link" %></strong></li>
         <% if logged_in? %>
-          <% if current_user.admin? %>
-            <li  class="nav-item px-2"><strong><%= link_to "USERS", users_path, class: "nav-link" %></strong></li>
             <li class="nav-item text-nowrap px-2"><strong><%= link_to "MEETING SPACE", user_path(current_user), class: "nav-link" %></strong></li>
+          <% if current_user.admin? %>
             <li class="nav-item text-nowrap px-2"><strong><%= link_to "SEAT UPDATE", operations_edit_path, class: "nav-link" %></strong></li>
+            <li  class="nav-item px-2"><strong><%= link_to "USERS", users_path, class: "nav-link" %></strong></li>
           <% end %>
           <li class="nav-item px-2"><strong><%= link_to "LOGOUT", logout_path, method: :delete, class: "nav-link" %></strong></li>
         <% else %>
