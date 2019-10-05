@@ -1,83 +1,61 @@
 <% provide(:title, 'ミーティングスペース予約画面') %>
 
-<div class="container">
-  <div class="center jumbotron jumbotron-extend-1">
-    <h2>コワーキングスペース利用状況</h2>
-    <p class="operation">更新日時：<%= l(@operation.updated_at, format: :long) %></p>
-    <p class="operation">稼働状況：利用席数<%= @operation.seat %> / 総席数<%= @operation.all_seat %></p>
-    <%= render 'tops/operation' %>
+<div class="container">  
+  <h1>ミーティングスペース予約画面</h1>
+  <h2>ミーティングスペース予約はこちら</h2>
+
+  <p>予約日時を選択してください。</p>
+  <div class="reservation_week_form">
+    <%= render 'reservation_week' %>
   </div>
-</div>
-
-<h1>ミーティングスペース予約画面</h1>
-<h2>ミーティングスペース予約はこちら</h2>
-<p>
-[手順]<br/>
-1.ご希望の月日、時間の開始時間の白枠をクリックします。<br/>
-　（グレーの枠は予約が入ってます）<br/>
-2.予約内容が表示されますので、利用時間を選び「予約する」をクリック。<br/>
-</p>
-<p>※現在予約できる期間：2019/08/31(土) 〜 2019/11/29(金)</p>
-<p>※受付締切：当日の2時間前まで</p>
-<p>※受付開始：90日前の0時から</p>
-
-
-<p>予約日時を選択してください。</p>
-<div class="reservation_week_form">
-  <%= render 'reservation_week' %>
-</div>
-<div class="input-group date datepicker">
-  <input type="hidden">
-  <span class="input-group-addon reservation_calendar">
-    <button type="button" class="reservation_calendar_btn">カレンダー</button>
-  </span>
-</div>
-<div class="reservation_status_list">
-  <div class="can_reservation"> 
-    <div></div>
-    <p>予約できます</p>
+  
+  <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+    <input type="hidden" class="datetimepicker-input" data-target="#datetimepicker"/>
+    <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+        <button type="submit">カレンダー</button>
+    </div>
   </div>
-  <div class="can_not_reservation">
-    <div></div>
-    <p>予約できません</p>
+  
+  <div class="reservation_status_list">
+    <div class="can_reservation"> 
+      <div></div>
+      <p>予約できます</p>
+    </div>
+    <div class="can_not_reservation">
+      <div></div>
+      <p>予約できません</p>
+    </div>
   </div>
+  <div class="reservation_week_form_table">
+    <%= render 'reservation_week_tabale_th' %>
+  </div>
+  <div class="reservation_week_form_table_body">
+    <%= render 'reservation_week_tabale_body' %>
+  </div>
+  
+  <h5><%= @user.name %>様　予約状況一覧</h5>
+  <% @login_user_reservations.each do |login_user_reservation| %>
+    <table>
+        <tr>
+            <td><%= l(login_user_reservation.meeting_on, format: :long_mini) %></td>
+            <td><%= l(login_user_reservation.started_at, format: :time) %>〜</td>
+            <td><%= l(login_user_reservation.finished_at, format: :time) %></td>
+        </tr>
+        <tr>
+            <td><%= link_to '削除', user_reservation_url(@user,login_user_reservation), remote: true %></td>
+            <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+        </tr>
+    </table>
+  <% end %>
 </div>
-<div class="reservation_week_form_table">
-  <%= render 'reservation_week_tabale_th' %>
-</div>
-<div class="reservation_week_form_table_body">
-  <%= render 'reservation_week_tabale_body' %>
-</div>
-
-<h5><%= @user.name %>様　予約状況一覧</h5>
-<% @login_user_reservations.each do |login_user_reservation| %>
-  <table>
-      <tr>
-          <td><%= l(login_user_reservation.meeting_on, format: :long_mini) %></td>
-          <td><%= l(login_user_reservation.started_at, format: :time) %>〜</td>
-          <td><%= l(login_user_reservation.finished_at, format: :time) %></td>
-      </tr>
-      <tr>
-          <td><%= link_to '削除', user_reservation_url(@user,login_user_reservation), remote: true %></td>
-          <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-      </tr>
-  </table>
-<% end %>
-
-
 <script>
 
 $(function(){
-  $('.datepicker').datetimepicker({
-    format : "YYYY/MM/DD",
-    defaultDate : new Date(),
-    icons: {
-      previous: "fa fa-arrow-left",
-      next: "fa fa-arrow-right"
-    }
+  $('#datetimepicker').datetimepicker({
+    format: 'L'
   });
   
-   $('.datepicker').on('dp.change', function (e) {
+   $('#datetimepicker').on('change.datetimepicker', function (e) {
        var date = String(e.date).split(" ")[3]+"-"+(new Date(e.date).getMonth() + 1)+"-"+String(e.date).split(" ")[2];
          $.ajax({
                 url:'/users/<%= current_user.id %>/change_show',

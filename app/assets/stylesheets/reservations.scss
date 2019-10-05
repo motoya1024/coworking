@@ -5,27 +5,37 @@
 
 /* reservation page */
 
+.reservation_week_form_table_body{
+	overflow: auto;
+  scroll-snap-type: y mandatory;
+  height:700px;
+  max-width:908px;
+  border-right:1px solid #AAAAAA;
+  border-bottom:1px solid #AAAAAA;
+}
+
 ul.time-field {
   list-style: none;
   padding: 0;
   text-align:right;
   li {
     height: 74px;
-    width: 40px;
+    min-width: 40px;
   }
 }
 
 .week-day-th {
   height: 35px;
-  min-width: 41px;
+  min-width: 51px;
+  &:last-child {
+    min-width: 16px;
+  }
 }
 
 .week-day-td {
   height: 35px;
   width:120px;
   text-align:center;
-  white-space:pre-wrap;
-  word-wrap: break-all；
 }
 
 .time-schedule {

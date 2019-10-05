@@ -1,27 +1,32 @@
 <% provide(:title, "ログイン") %>
-<h1>ログイン</h1>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
-      
-        <%= f.label :メールアドレス, class: "label-login" %>
-        <%= f.email_field :email, class: 'form-control' %>
-        
-        <%= f.label :パスワード, class: "label-login" %>
-        <%= f.password_field :password, class: 'form-control' %>
-        
-        <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
-          <%= f.check_box :remember_me, id: "remember-me" %>
-          <span>ログイン情報を記憶する</span>
-          <% end %>
-          
-        <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
+<div class="container pt-5">
+  <div class="text-center my-5">
+    <p class="mb-0">Meating Spaceの予約</p>
+    <h2 class="d-inline-block border-bottom border-dark">RESERVATION</h2>
+  </div>
+  <div>
+    <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+      <div class="form-group row">
+        <%= f.label :email, "Email", class: "label-login col-2 offset-2 lead text-right mr-4" %>
+        <%= f.email_field :email, class: 'form-control col-6', id: 'session_email', placeholder: "メールアドレス" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :password, "Password", class: "label-login col-2 offset-2 text-right mr-4 lead" %>
+        <%= f.password_field :password, class: 'form-control col-6', id: 'session_password', placeholder: "パスワード" %>
+      </div>
+      <div class="row">
+        <%= f.label :remember_me, class: "checkbox inline checkbox-login mx-auto", for: "remember-me" do %>
+        <%= f.check_box :remember_me, id: "remember-me col-1" %>
+          <span class="col-4">ログイン情報を記憶</span>
+        <% end %>
+      </div>
+      <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login col-4 col-lg-2 mx-auto shadow mt-3" %>
+    <% end %>
+    <p class="text-center py-5">
+      <%= link_to signup_path, class: "border-bottom border-primary lead signup_link" do %>
+        <i class="fas fa-child"></i>新規登録はこちら
       <% end %>
-      <p>
-        ユーザー登録がまだの場合は<%= link_to "こちら", signup_path %>
-      </p>
-    </div>
+    </p>
   </div>
 </div>
