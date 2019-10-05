@@ -4,16 +4,16 @@
   <p class="mb-5">登録されているユーザーの検索・確認・更新・削除ができます。</p>
 
 <!-- 検索機能 -->
-<div class="search">
-  <%= form_tag(users_path, method: :get, class: "form-inline") do %>
-    <div class="input-group mx-auto mb-5 w-50">
-      <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control", 'aria-describedby': "button-addon" %>
-      <span class="input-group-append">
-        <%= submit_tag '検索', name: :nil, class: "btn btn-primary", id: "button-addon" %>
-      </span>
-    </div>
-  <% end %>
-</div>
+  <div>
+    <%= form_tag(users_path, method: :get, class: "form-inline") do %>
+      <div class="input-group mx-auto mb-5 w-50">
+        <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control", 'aria-describedby': "button-addon" %>
+        <span class="input-group-append">
+          <%= submit_tag '検索', name: :nil, class: "btn btn-primary", id: "button-addon" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
 
 <div class="col-md-10 col-md-offset-1">
   <table class="table table-condensed table-striped table-hover" id="table-users">
