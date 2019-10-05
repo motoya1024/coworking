@@ -1,37 +1,20 @@
 <% @kado_ritsu = 100 * @operation.seat / @operation.all_seat %>
+
 <% if @kado_ritsu <= 20 %>
-  <div class="progress mt-4 shadow-lg" style="height: 50px;">
-    <div class="progress-bar bg-primary progress-bar-striped active prog progress-bar-animated"
-         role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%">
-       <span class="fas fa-chair d-inline lead">&nbsp;&nbsp;&nbsp;20%</span>
-    </div>
-  </div>
+  <% @bar_color = "bg-primary" %>
 <% elsif @kado_ritsu <= 40 %>
-  <div class="progress mt-4 shadow-lg" style="height: 50px;">
-    <div class="progress-bar bg-info progress-bar-striped active progprogress-bar-animated"
-         role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-      <span class="fas fa-chair d-inline lead">&nbsp;&nbsp;&nbsp;40%</span>
-    </div>
-  </div>
+  <% @bar_color = "bg-info" %>
 <% elsif @kado_ritsu <= 60 %>
-  <div class="progress mt-4 shadow-lg" style="height: 50px;">
-    <div class="progress-bar bg-success progress-bar-striped active prog progress-bar-animated"
-         role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
-      <span class="fas fa-chair d-inline lead">&nbsp;&nbsp;&nbsp;60%</span>
-    </div>
-  </div>
+  <% @bar_color = "bg-success" %>
 <% elsif @kado_ritsu <= 80 %>
-  <div class="progress mt-4 shadow-lg" style="height: 50px;">
-    <div class="progress-bar bg-warning progress-bar-striped active prog progress-bar-animated"
-         role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
-      <span class="fas fa-chair d-inline lead">&nbsp;&nbsp;&nbsp;80%</span>
-    </div>
-  </div>
+  <% @bar_color = "bg-warning" %>
 <% else @kado_ritsu <= 100 %>
-  <div class="progress mt-4 shadow-lg" style="height: 50px;">
-    <div class="progress-bar bg-danger progress-bar-striped active prog progress-bar-animated"
-         role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-      <span class="fas fa-chair d-inline lead">&nbsp;&nbsp;&nbsp;100%</span>
-    </div>
-  </div>
+  <% @bar_color = "bg-danger" %>
 <% end %>
+
+<div class="progress mt-4 shadow-lg" style="height: 50px;">
+  <div class="progress-bar <%= @bar_color %> progress-bar-striped active prog progress-bar-animated"
+       role="progressbar" aria-valuenow="<%= @kado_ritsu %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @kado_ritsu %>%">
+    <span class="fas fa-chair d-inline lead">&nbsp;&nbsp;&nbsp;<%= @kado_ritsu %>%</span>
+  </div>
+</div>
