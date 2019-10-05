@@ -23,12 +23,26 @@
 .date{
   margin-top:20px;
 }
+
 /* user index */
 
-#table-users {
-  td {
-    vertical-align: middle;
-  }  
+.pagination {
+  justify-content: center;
+}
+
+.page-item .page-link {
+  color: gray;
+}
+
+.page-item .page-link:hover {
+  color: gray;
+}
+
+.pagination .page-item.active
+.page-link {
+  color: white;
+  background-color: gray;
+  border: gray;
 }
 
 
@@ -38,3 +52,9 @@
   margin-top: 10px;
   text-align: center;
 }
+
+
+
+
+
+
