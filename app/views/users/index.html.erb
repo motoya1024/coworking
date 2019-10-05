@@ -72,7 +72,9 @@
           <!-- ユーザー情報モーダル -->
           <td class="center">
             <% if current_user.admin? && !current_user?(user) %>
-              <%= link_to "基本情報編集", edit_info_user_path(user), remote: true, class: "btn btn-success" %>
+              <%= link_to(edit_info_user_path(user), remote: true, class: "btn btn-outline-primary d-block d-md-inline-block rounded-circle px-2 py-1 mx-2") do %>
+                <i class="fas fa-pen"></i>
+              <% end %>
               <%= link_to "削除", user, method: :delete,
                   data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
             <% end %>
