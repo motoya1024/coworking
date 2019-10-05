@@ -1,26 +1,7 @@
 <% provide(:title, 'ミーティングスペース予約画面') %>
 
-<div class="container">
-  <div class="center jumbotron jumbotron-extend-1">
-    <h2>コワーキングスペース利用状況</h2>
-    <p class="operation">更新日時：<%= l(@operation.updated_at, format: :long) %></p>
-    <p class="operation">稼働状況：利用席数<%= @operation.seat %> / 総席数<%= @operation.all_seat %></p>
-    <%= render 'tops/operation' %>
-  </div>
-</div>
-
 <h1>ミーティングスペース予約画面</h1>
 <h2>ミーティングスペース予約はこちら</h2>
-<p>
-[手順]<br/>
-1.ご希望の月日、時間の開始時間の白枠をクリックします。<br/>
-　（グレーの枠は予約が入ってます）<br/>
-2.予約内容が表示されますので、利用時間を選び「予約する」をクリック。<br/>
-</p>
-<p>※現在予約できる期間：2019/08/31(土) 〜 2019/11/29(金)</p>
-<p>※受付締切：当日の2時間前まで</p>
-<p>※受付開始：90日前の0時から</p>
-
 
 <p>予約日時を選択してください。</p>
 <div class="reservation_week_form">
