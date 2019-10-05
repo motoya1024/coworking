@@ -1,14 +1,5 @@
 <% provide(:title, 'ミーティングスペース予約画面') %>
 
-<div class="container">
-  <div class="center jumbotron jumbotron-extend-1">
-    <h2>コワーキングスペース利用状況</h2>
-    <p class="operation">更新日時：<%= l(@operation.updated_at, format: :long) %></p>
-    <p class="operation">稼働状況：利用席数<%= @operation.seat %> / 総席数<%= @operation.all_seat %></p>
-    <%= render 'tops/operation' %>
-  </div>
-</div>
-
 <h1>ミーティングスペース予約画面</h1>
 <h2>ミーティングスペース予約はこちら</h2>
 
