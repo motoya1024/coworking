@@ -6,14 +6,14 @@
     <h2 class="d-inline-block border-bottom border-dark mb-5">RESERVATION</h2>
     <p class="mb-5">Meeting Spaceを予約したい日時を選択してください。</p>
   </div>
-  <div class="reservation_week_form">
+  <div class="reservation_week_form d-inline">
     <%= render 'reservation_week' %>
   </div>
   
-  <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+  <div class="input-group date d-inline" id="datetimepicker" data-target-input="nearest">
     <input type="hidden" class="datetimepicker-input" data-target="#datetimepicker"/>
-    <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
-        <button type="submit">カレンダー</button>
+    <div class="input-group-append d-inline" data-target="#datetimepicker" data-toggle="datetimepicker">
+      <button type="submit" class="ml-3" id="callender"><i class="far fa-calendar-alt btn btn-secondary"></i></button>
     </div>
   </div>
   
