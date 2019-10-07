@@ -10,26 +10,32 @@
     </ul>
   </div>
 <% end %>
-  <h1>コワーキング利用状況更新画面</h1>
+  <h1><u>SEAT UPDATE</u></h1>
 </head>
   
 <body>
   <div class="center">
+    
+    <h3>席の利用状況を編集することができます。</h3>
     <h3>【<%= Date.current %>(<%= %w(日 月 火 水 木 金 土)[Date.today.wday]%>)】</h3>
-    <h2>利用席数を入力してください</h2>
-      <h3><%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
-      <div style="display:inline-flex">
+    
+    <h2><%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
+      
+      <div class= "row" style="display:inline-flex">
       <%= f.label :利用席数 %>
       <%= f.number_field :seat, value: @operation.seat,class:"form-main",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>
       ／
       <%= f.number_field :all_seat, value: @operation.all_seat,class:"form-main",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>席
-      
-      <input type="reset" value="リセット">
       </div>
-      <p><%= f.submit "更新", class: "btn btn-primary" %>
-      <%= link_to 'キャンセル', user_path(current_user) ,class:"btn btn-primary"%>
-      </p>
-    <% end %>
-    </h3>
-  </div>
+      
+      <div>
+       <div><%= f.submit "更新", class: "btn btn-primary col-3" %></div>
+       <div><%= link_to 'キャンセル', user_path(current_user) ,class:"btn btn-primary col-3"%></div>
+       <div><input type="reset" value="リセット" class="btn btn-primary col-3"></div>
+      </div>
+      
+     <% end %>
+    </h2>
+    
+  </div><!--class="container"-->
 </body> 
