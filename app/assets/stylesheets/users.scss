@@ -5,11 +5,6 @@
 
 //user show
 
-.reservation_week_form{
-  float:left;
-  margin-right:30px;
-}
-
 .reservation_prev,.reservation_next{
   font-size:20px;
   padding:5px 10px 5px 10px;
@@ -21,46 +16,42 @@
   margin:0px 10px 0px 10px;
 }
 
-.reservation_calendar{
-  background-color:#CCCCCC;
-  width:100px;
-}
-
-.reservation_calendar_btn{
-  background-color:#CCCCCC;
-  border:1px solid #CCCCCC;
-}
-
-.input-group-addon:last-child{
-  border-radius: 5px;
-}
-
 .space{
   height:500px;
 }
 
+.date{
+  margin-top:20px;
+}
+
 /* user index */
 
-.search {
-    width: 30%;
-    margin-left: auto;
-    margin-bottom: 30px;
+.pagination {
+  justify-content: center;
 }
 
-.search p {
-    font-size: x-large;
+.page-item .page-link {
+  color: gray;
 }
 
-#table-users {
-  td {
-    vertical-align: middle;
-  }  
+.page-item .page-link:hover {
+  color: gray;
+}
+
+.pagination .page-item.active
+.page-link {
+  color: white;
+  background-color: gray;
+  border: gray;
+}
+
+.thead-color {
+    background-color: #CCCCCC;
+    color: white;
 }
 
 
-/* _edit_info */
 
-.button {
-  margin-top: 10px;
-  text-align: center;
-}
+
+
+
