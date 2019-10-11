@@ -1,5 +1,4 @@
 <% provide(:class_text, 'edit-info') %>
-<% provide(:button_text, '予約') %>
 
 <div class="modal-dialog modal-lg modal-dialog-center">
   <div class="modal-content">
@@ -16,15 +15,30 @@
 
             <%= f.label "お名前" %>
             <%= f.text_field :telmail_name, class: 'form-control', value: @reservation.telmail_name ,disabled: true %>
-      
-            <%= f.label "予約日" %>
-            <%= f.date_field :meeting_on, class: 'form-control' , disabled: true %>
-      
-            <%= f.label "予約時間" %>
-            <%= f.select :started_at, @times24, {} ,disabled: true %>
-            ~
-            <%= f.select :finished_at, @times24, {} ,disabled: true %>
-
+            <div>
+              <%= f.label "開始時間" %>
+              <%= raw sprintf(f.datetime_select(
+                                        :started_at, 
+                                        minute_step: 30,
+                                        use_month_numbers: true,
+                                        disabled: true,
+                                        date_separator: '%s', 
+                                        time_separator: "%s",
+                                        datetime_separator: '%s'), '年', '月', '日',"時","分")
+               %>
+             </div>
+             <div>
+               <%= f.label "終了時間" %>
+               <%= raw sprintf(f.datetime_select(
+                                              :finished_at,
+                                              minute_step: 30,
+                                              use_month_numbers: true,
+                                              disabled: true,
+                                              date_separator: '%s', 
+                                              time_separator: "%s",
+                                              datetime_separator: '%s'), '年', '月', '日',"時","分")
+               %>
+             </div>
             <div class="button">
               <%= link_to "削除", user_reservation_path(@user, @reservation), method: :delete,
                 data: { confirm: "#{@user.name}様の予約情報を削除してよろしいですか？" }, class: "btn btn-danger" %>
