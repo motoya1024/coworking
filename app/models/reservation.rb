@@ -1,7 +1,8 @@
 class Reservation < ApplicationRecord
   belongs_to :user
   
-  validates :meeting_on, presence: true
+  validates :started_at, presence: true
+  validates :finished_at, presence: true
   validates :telmail_name, length: { maximum: 50 }
   
   # 開始時間のみの更新は無効
