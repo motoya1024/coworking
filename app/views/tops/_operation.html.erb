@@ -4,7 +4,7 @@
   <% @bar_color = "bg-primary" %>
 <% elsif @kado_ritsu <= 40 %>
   <% @bar_color = "bg-info" %>
-<% elsif @kado_ritsu <= 60 %>
+<% elsif @kado_ritsu <= 60 %>　
   <% @bar_color = "bg-success" %>
 <% elsif @kado_ritsu <= 80 %>
   <% @bar_color = "bg-warning" %>
@@ -15,6 +15,6 @@
 <div class="progress mt-4 shadow-lg" style="height: 50px;">
   <div class="progress-bar <%= @bar_color %> progress-bar-striped active prog progress-bar-animated"
        role="progressbar" aria-valuenow="<%= @kado_ritsu %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @kado_ritsu %>%">
-    <span class="fas fa-chair d-inline lead">&nbsp;&nbsp;&nbsp;<%= @kado_ritsu %>%</span>
+    <span class="fas fa-chair d-inline lead kado-bar">&nbsp;&nbsp;&nbsp;<%= @kado_ritsu %>%</span>
   </div>
 </div>
