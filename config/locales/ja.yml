@@ -206,6 +206,7 @@ ja:
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
+      index: "%Y年%-m月%-d日(%a) %H:%M"
       short: "%m/%d %H:%M"
       long_day: "%Y/%-m/%-d(%a)"
       short_day: "%-m/%-d(%a)"

@@ -1,7 +1,7 @@
 User.create!(name: "わい管理者や！",
              email: "admin@email.com",
-             password: "password",
-             password_confirmation: "password",
+             password: "Password",
+             password_confirmation: "Password",
              admin: true)
 
 Operation.create!(seat: 5,
@@ -13,8 +13,8 @@ Operation.create!(seat: 5,
   password = "Password"
   User.create!(name: name,
                email: email,
-               password: password,
-               password_confirmation: password)
+               password: "Password",
+               password_confirmation: "Password")
 end
 
 users = User.order(:created_at).take(3)
