@@ -9,7 +9,6 @@
 	overflow: auto;
   scroll-snap-type: y mandatory;
   height:700px;
-  max-width:908px;
   border-right:1px solid #AAAAAA;
   border-bottom:1px solid #AAAAAA;
 }
@@ -26,7 +25,7 @@ ul.time-field {
 
 .week-day-th {
   height: 35px;
-  min-width: 51px;
+  min-width: 100px;
   &:last-child {
     min-width: 16px;
   }
@@ -108,4 +107,16 @@ ul.time-field {
 
 .text-color{
   color:black;
+}
+
+table{
+  width: 100%;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-1{
+  width: 1%;
 }

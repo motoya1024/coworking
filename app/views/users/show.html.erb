@@ -27,13 +27,14 @@
       <p>予約できません</p>
     </div>
   </div>
+  <div class="table-responsive">
   <div class="reservation_week_form_table">
     <%= render 'reservation_week_tabale_th' %>
   </div>
-  <div class="reservation_week_form_table_body">
+  <div class="reservation_week_form_table_body border-right-0">
     <%= render 'reservation_week_tabale_body' %>
   </div>
-  
+  </div>
   <h5><%= @user.name %>様　予約状況一覧</h5>
   <% @login_user_reservations.each do |login_user_reservation| %>
     <table>
