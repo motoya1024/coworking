@@ -1,23 +1,19 @@
 <% provide(:class_text, 'edit-info') %>
 
-<div class="modal-dialog modal-lg modal-dialog-center">
+<div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h1 class="modal-title">予約削除</h1>
-    </div>
-    <div class="modal-body">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <%= form_with(model: @reservation, url: user_reservations_path(@user), local: true, method: :post) do |f| %>
-
-            <%= f.label "お名前" %>
-            <%= f.text_field :telmail_name, class: 'form-control', value: @reservation.telmail_name ,disabled: true %>
-            <div>
-              <%= f.label "開始時間" %>
-              <%= raw sprintf(f.datetime_select(
+      <h2 class="modal-title mx-auto">予約削除確認画面</h2>
+    </div><!-- /.modal-header  -->
+    <%= form_with(model: @reservation, url: user_reservations_path(@user), local: true, method: :post) do |f| %>
+      <div class="modal-body">
+        <div class="form-group row">
+          <%= f.label "Name", class: "label-login col-2 offset-2 lead text-right mr-4" %>
+          <%= f.text_field :telmail_name, class: 'form-control col-6', value: @reservation.telmail_name ,disabled: true %>
+        </div>
+        <div class="form-group row">
+          <%= f.label "Start time", class: "label-login col-2 offset-2 lead text-right mr-4" %>
+          <%= raw sprintf(f.datetime_select(
                                         :started_at, 
                                         minute_step: 30,
                                         use_month_numbers: true,
@@ -25,11 +21,11 @@
                                         date_separator: '%s', 
                                         time_separator: "%s",
                                         datetime_separator: '%s'), '年', '月', '日',"時","分")
-               %>
-             </div>
-             <div>
-               <%= f.label "終了時間" %>
-               <%= raw sprintf(f.datetime_select(
+          %>
+        </div>
+        <div class="form-group row">
+          <%= f.label "End time", class: "label-login col-2 offset-2 lead text-right mr-4" %>
+          <%= raw sprintf(f.datetime_select(
                                               :finished_at,
                                               minute_step: 30,
                                               use_month_numbers: true,
@@ -37,18 +33,18 @@
                                               date_separator: '%s', 
                                               time_separator: "%s",
                                               datetime_separator: '%s'), '年', '月', '日',"時","分")
-               %>
-             </div>
-            <div class="button">
-              <%= link_to "削除", user_reservation_path(@user, @reservation), method: :delete,
-                data: { confirm: "#{@user.name}様の予約情報を削除してよろしいですか？" }, class: "btn btn-danger" %>
-              <button type="button" class="btn btn-default" data-dismiss="modal">
-                キャンセル
-              </button>
-            </div>
-          <% end %>
+          %>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+      </div><!-- /.modal-body -->
+      <div class="modal-footer">
+        <span class="mx-auto">
+          <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">
+            キャンセル
+          </button>
+          <%= link_to "削除", user_reservation_path(@user, @reservation), method: :delete,
+                data: { confirm: "#{@user.name}様の予約情報を削除してよろしいですか？" }, class: "btn btn-danger px-4 mx-3" %>
+        </span>
+      </div><!-- /.modal-footer -->
+    <% end %>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
