@@ -1,7 +1,11 @@
 <% provide(:title, 'ミーティングスペース予約画面') %>
 
 <div class="container">  
-  <h1>ミーティングスペース予約画面</h1>
+  <div class="text-center my-5">
+    <p class="mb-0">Meeting Spaceの予約</p>
+    <h2 class="d-inline-block border-bottom border-dark mb-5">RESERVATION</h2>
+    <p class="mb-5">Meeting Spaceを予約したい日時を選択してください</p>
+  </div>
   
   <h5><%= @user.name %>様　予約状況一覧</h5>
   <% @login_user_reservations.each do |login_user_reservation| %>
@@ -15,10 +19,7 @@
     </table>
   <% end %>
   
-  <h2>ミーティングスペース予約はこちら</h2>
-
-  <p>予約日時を選択してください。</p>
-  <div class="reservation_week_form">
+  <div class="reservation_week_form d-inline">
     <%= render 'reservation_week' %>
   </div>
   
