@@ -4,21 +4,26 @@
   <div class="text-center my-5">
     <p class="mb-0">Meeting Spaceの予約</p>
     <h2 class="d-inline-block border-bottom border-dark mb-5">RESERVATION</h2>
-    <p class="mb-5">Meeting Spaceを予約したい日時を選択してください</p>
+    <p class="mb-0">ご自身のMeeting Spaceの予約状況を確認することができます。</p>
+    <p class="mb-5">また、カレンダーで日時を選択することで、Meeting Spaceを予約することができます。</p>
+    <div class="card border-light w-50 mx-auto">
+      <strong class="card-header">
+        <%= @user.name %>様　予約状況一覧
+      </strong>
+      <% @login_user_reservations.each do |login_user_reservation| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex">
+            <span class="mr-auto"><%= l(login_user_reservation.started_at, format: :index) %>〜<%= l(login_user_reservation.finished_at, format: :time) %></span>
+            <%= link_to(user_reservation_url(@user,login_user_reservation), class: "btn btn-outline-danger d-block d-md-inline-block px-2 py-1 ml-auto", remote: true) do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+          </li>
+        </ul>
+        <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+      <% end %>
+    </div>
   </div>
-  
-  <h5><%= @user.name %>様　予約状況一覧</h5>
-  <% @login_user_reservations.each do |login_user_reservation| %>
-    <table>
-        <tr>
-            <td><%= l(login_user_reservation.started_at, format: :index) %>〜</td>
-            <td><%= l(login_user_reservation.finished_at, format: :time) %></td>
-            <td><%= link_to '削除', user_reservation_url(@user,login_user_reservation), remote: true %></td>
-            <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-        </tr>
-    </table>
-  <% end %>
-  
+  <hr class="mb-5">
   <div class="reservation_week_form d-inline">
     <%= render 'reservation_week' %>
   </div>
