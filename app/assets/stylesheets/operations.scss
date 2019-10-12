@@ -32,6 +32,10 @@
     margin-top: 20px;
 }
 
+.kado-bar{
+    text-shadow: 1px 1px 3px black;
+}
+
 // スピナ非表示
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
