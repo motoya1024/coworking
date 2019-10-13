@@ -2,9 +2,9 @@
 <table border="1" style="border-collapse: collapse" bordercolor="#AAAAAA">
   <tbody>
     <tr>
-      <th>
+      <th class="week-day-th w-10">
         <div>
-          <ul class="time-field">
+          <ul class="time-field text-center">
             <% @time_number.each do |time_number| %>
               <li><%= time_number %></li>
             <% end %>
@@ -35,7 +35,7 @@
               <% top_position = get_position(reservation.started_at,reservation.finished_at,week_day) %>
               <% if current_user.admin? || (!current_user.admin && current_user.id == reservation.user_id) %>
                 <%= link_to(user_reservation_url(@user,reservation),remote:true,class: 'text-color') do %>
-                  <div class="reserved" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
+                  <div class="reserved text-center" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
                     <%= reservation.user.name %>様</br>
                     <%= l(reservation.started_at,format: :time) %> ~ <%= l(reservation.finished_at,format: :time) %>
                   </div>
@@ -49,6 +49,7 @@
           <% end %>
         </td>
       <% end %>
+      <td class="week-day-th w-1"></td>
     </tr>
  </tbody>
 </table>
