@@ -9,7 +9,6 @@
 	overflow: auto;
   scroll-snap-type: y mandatory;
   height:700px;
-  max-width:908px;
   border-right:1px solid #AAAAAA;
   border-bottom:1px solid #AAAAAA;
 }
@@ -26,7 +25,7 @@ ul.time-field {
 
 .week-day-th {
   height: 35px;
-  min-width: 51px;
+  min-width: 100px;
   &:last-child {
     min-width: 16px;
   }
@@ -58,7 +57,7 @@ ul.time-field {
     border-bottom: solid 1px #AAAAAA;
   }
   a:hover {
-    background-color: red;
+    background-color: #ADFF2F;
   }
 }
 
@@ -75,8 +74,7 @@ ul.time-field {
   width:100%;
   background-color:#EEEEEE;
   border-bottom: solid 1px #AAAAAA;
-  display: flex;
-  align-items: center;
+  font-size: 80%;
 }
 
 .top_vacant{
@@ -108,4 +106,16 @@ ul.time-field {
 
 .text-color{
   color:black;
+}
+
+table{
+  width: 100%;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-1{
+  width: 1%;
 }
