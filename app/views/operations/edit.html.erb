@@ -11,29 +11,129 @@
   </div>
 <% end %>
 </head>
-  
-<body>
-  <div class="container">
-    <div class="text-center">
-      
-    <div class="title"><u>SEAT UPDATE</u></div>
-    <div class="second-tittle">席の利用状況を編集することができます。</div>
-    
+<div class="container text-center">
+  <h2 class="d-inline-block border-bottom border-dark my-5">SEAT UPDATE</h1>
+   <!--
+  <h3>【<%= Date.current %>(<%= %w(日 月 火 水 木 金 土)[Date.today.wday]%>)】</h3>
+  -->
+  <p class="mb-5">
+    席の利用状況を編集することができます。
+  </p>
     <%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
-      
-      <div class= "row" style="display:inline-flex">
-      <h3><%= f.number_field :seat, value: @operation.seat,class:"form-main",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>席中
-      <%= f.number_field :all_seat, value: @operation.all_seat,class:"form-main",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>席利用</h3>
-      </div>
-      
-      <div class="row justify-content-center">
-       <div class="col-2"><%= f.submit "更新", class: "btn btn-update text-white btn-lg" %></div>
-       <div class="col-2"><%= link_to 'キャンセル', user_path(current_user) ,class:"btn btn-cancel text-white btn-lg"%></div>
-       <div class="col-2"><input type="reset" value="リセット" class="btn btn-reset btn-lg"></div>
-      </div>
-      
-     <% end %>
-    </div><!--class="text-center"-->
-  </div><!--class="container"-->
-  
-</body> 
+    <div class="row lead">
+      <%= f.number_field :seat, value: @operation.seat,class:"form-main col-md-2 offset-lg-2 offset-md-2 input-lg offset-xl-3 font-size counter1 text-right",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>
+      <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
+    <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
+      <span class="d-flex align-items-center">席中</span>
+      <%= f.number_field :all_seat, value: @operation.all_seat,class:"form-main col-md-2 col-xl-1 font-size text-right",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
+      <span class="d-flex align-items-center">席利用</span>
+    </div>
+    <div class="row mt-5">
+      <button type="reset" value="リセット", class="btn btn-warning col-2 col-md-2 offset-2">リセット</button>
+      <%= link_to 'キャンセル', user_path(current_user) ,class: "btn btn-secondary offset-1 col-3 col-md-2"%>
+      <%= f.submit "更新", class: "btn btn-primary offset-1 col-2 col-md-2" %>
+    </div>
+    
+   
+    
+  <% end %>
+</div>
+
+<style>
+.btn-outline-warning:hover {
+  color: white;
+}
+
+.btn-warning {
+  border-color: #FFFF99;
+  background: #FFFF99;
+}
+
+.btn-warning:hover {
+  border-color: #FFFF00;
+  background: #FFFF00;
+}
+
+ .font-size{
+   font-size: 30px;
+ }
+</style>
+
+<style>
+  .btnspinner{
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.spinner_area input{
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    width: auto;
+    vertical-align: middle;
+    /* デフォルトのスピナーを消す */
+    -webkit-appearance: none;
+    -moz-appearance:textfield;
+}
+
+.spinner_area input[type="button"]{
+    cursor: pointer;
+}
+</style>
+
+<script>
+$(function(){
+    
+    var arySpinnerCtrl = [];
+    var spin_speed = 20; //変動スピード
+    
+    //長押し押下時
+    $('.btnspinner').on('touchstart mousedown click', function(e){
+        if(arySpinnerCtrl['interval']) return false;
+        var target = $(this).data('target');
+        arySpinnerCtrl['target'] = target;
+        arySpinnerCtrl['timestamp'] = e.timeStamp;
+        arySpinnerCtrl['cal'] = Number($(this).data('cal'));
+        //クリックは単一の処理に留める
+        if(e.type == 'click'){
+            spinnerCal();
+            arySpinnerCtrl = [];
+            return false;
+        }
+        //長押し時の処理
+        setTimeout(function(){
+            //インターバル未実行中 + 長押しのイベントタイプスタンプ一致時に計算処理
+            if(!arySpinnerCtrl['interval'] && arySpinnerCtrl['timestamp'] == e.timeStamp){
+                arySpinnerCtrl['interval'] = setInterval(spinnerCal, spin_speed);
+            }
+        }, 500);
+    });
+    
+    //長押し解除時 画面スクロールも解除に含む
+    $(document).on('touchend mouseup scroll', function(e){
+        if(arySpinnerCtrl['interval']){
+            clearInterval(arySpinnerCtrl['interval']);
+            arySpinnerCtrl = [];
+        }
+    });
+    
+    //変動計算関数
+    function spinnerCal(){
+        var target = $(arySpinnerCtrl['target']);
+        var num = Number(target.val());
+        num = num + arySpinnerCtrl['cal'];
+        if(num > Number(target.data('max'))){
+            target.val(Number(target.data('max')));
+        }else if(Number(target.data('min')) > num){
+            target.val(Number(target.data('min')));
+        }else{
+            target.val(num);
+        }
+    }
+    
+});
+</script>
