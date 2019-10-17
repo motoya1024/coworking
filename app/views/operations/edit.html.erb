@@ -18,7 +18,6 @@
       
     <div class="title"><u>SEAT UPDATE</u></div>
     <div class="second-tittle">席の利用状況を編集することができます。</div>
-    <div>【<%= Date.current %>(<%= %w(日 月 火 水 木 金 土)[Date.today.wday]%>)】</div>
     
     <%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
       
