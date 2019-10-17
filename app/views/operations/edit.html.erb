@@ -18,13 +18,17 @@
   </p>
     <%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
     <div class="row lead">
-      <%= f.number_field :seat, value: @operation.seat,class:"form-main col-md-2 offset-lg-2 offset-md-2 input-lg offset-xl-3 font-size counter-total text-right",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>
-      <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter-total">
-      <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter-total">
-      <span class="d-flex align-items-center">席中</span>
-      <%= f.number_field :all_seat, value: @operation.all_seat,class:"form-main col-md-2 col-xl-1 font-size text-right counter-now",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
-      <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter-now">
-      <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter-now">
+      <%= f.number_field :seat, value: @operation.seat,class:"form-main col-md-2 offset-lg-2 offset-md-2 input-lg offset-xl-3 font-size counter-total text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>
+      <div class="btn-group-vertical mr-3">
+        <input type="button" value="＋" class="btnspinner btn page-link text-dark d-inline-block" data-cal="1" data-target=".counter-total">
+        <input type="button" value="－" class="btnspinner btn page-link text-dark d-inline-block" data-cal="-1" data-target=".counter-total">
+      </div>
+      <span class="d-flex align-items-center mr-3">席中</span>
+      <%= f.number_field :all_seat, value: @operation.all_seat,class:"form-main col-md-2 input-lg font-size counter-now text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
+      <div class="btn-group-vertical mr-3">
+        <input type="button" value="＋" class="btnspinner btn page-link text-dark d-inline-block" data-cal="1" data-target=".counter-now">
+        <input type="button" value="－" class="btnspinner btn page-link text-dark d-inline-block" data-cal="-1" data-target=".counter-now">
+      </div>
       <span class="d-flex align-items-center">席利用</span>
     </div>
     <div class="row mt-5">
@@ -59,27 +63,27 @@
 </style>
 
 <style>
-  .btnspinner{
-    -ms-user-select: none;
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
+/*  .btnspinner{*/
+/*    -ms-user-select: none;*/
+/*    -moz-user-select: -moz-none;*/
+/*    -khtml-user-select: none;*/
+/*    -webkit-user-select: none;*/
+/*    user-select: none;*/
+/*}*/
 
 .spinner_area input{
-    padding: 11px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 18px;
-    width: auto;
-    vertical-align: middle;
+    /*padding: 11px;*/
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 4px;*/
+    /*font-size: 18px;*/
+    /*width: auto;*/
+    /*vertical-align: middle;*/
     /* デフォルトのスピナーを消す */
     -webkit-appearance: none;
     -moz-appearance:textfield;
 }
 
-.spinner_area input[type="button"]{
-    cursor: pointer;
-}
+/*.spinner_area input[type="button"]{*/
+/*    cursor: pointer;*/
+/*}*/
 </style>
