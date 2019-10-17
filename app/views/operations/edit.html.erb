@@ -1,8 +1,9 @@
 <% provide(:title, '利用状況更新') %>
 
-<head>
-  <% if @operation.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
+
+<div class="container text-center">
+    <% if @operation.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger mt-3">
     <ul>
       <% @operation.errors.full_messages.each do |message| %>
         <div class="form-error"><%= message %></div>
@@ -10,8 +11,6 @@
     </ul>
   </div>
 <% end %>
-</head>
-<div class="container text-center">
   <h2 class="d-inline-block border-bottom border-dark my-5">SEAT UPDATE</h1>
   <p class="mb-5">
     席の利用状況を編集することができます。
