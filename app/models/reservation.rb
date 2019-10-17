@@ -29,7 +29,7 @@ class Reservation < ApplicationRecord
   end
   
   def make_a_reservation_is_valid_on_reserved_time
-    if (started_at.present? && finished_at.present?) && Reservation.where("started_at < ? and finished_at > ?",finished_at,started_at).present?
+    if (started_at.present? && finished_at.present?) && Reservation.where("started_at < ? and finished_at > ?",finished_at,started_at).where.not(id: self.id).present?
       errors[:base] << "入力された時間はすでに予約が入っています。"
     end
   end
