@@ -25,7 +25,9 @@
       <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
       <span class="d-flex align-items-center">席中</span>
-      <%= f.number_field :all_seat, value: @operation.all_seat,class:"form-main col-md-2 col-xl-1 font-size text-right",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
+      <%= f.number_field :all_seat, value: @operation.all_seat,class:"form-main col-md-2 col-xl-1 font-size text-right counter2",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
+      <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter2">
+    <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter2">
       <span class="d-flex align-items-center">席利用</span>
     </div>
     <div class="row mt-5">
