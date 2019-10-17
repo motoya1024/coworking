@@ -1,5 +1,5 @@
 <!-- 7回繰り返す -->
-<table border="1" style="border-collapse: collapse" bordercolor="#AAAAAA">
+<table border="0" style="border-collapse: collapse">
   <tbody>
     <tr>
       <th class="week-day-th w-10">
@@ -35,13 +35,13 @@
               <% top_position = get_position(reservation.started_at,reservation.finished_at,week_day) %>
               <% if current_user.admin? || (!current_user.admin && current_user.id == reservation.user_id) %>
                 <%= link_to(user_reservation_url(@user,reservation),remote:true,class: 'text-color') do %>
-                  <div class="reserved text-center" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
+                  <div class="reserved text-center text-truncate" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
                     <%= reservation.user.name %>様</br>
                     <%= l(reservation.started_at,format: :time) %> ~ <%= l(reservation.finished_at,format: :time) %>
                   </div>
                 <% end %>
               <% else %>
-                <div class="reserved" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
+                <div class="reserved text-center" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
                   <%= l(reservation.started_at,format: :time) %> ~ <%= l(reservation.finished_at,format: :time) %>
                 </div>
               <% end %>
@@ -49,7 +49,6 @@
           <% end %>
         </td>
       <% end %>
-      <td class="week-day-th w-1"></td>
     </tr>
  </tbody>
 </table>
