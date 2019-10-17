@@ -1,6 +1,5 @@
 <% provide(:title, '利用状況更新') %>
 
-
 <div class="container text-center">
     <% if @operation.errors.any? %>
   <div id="error_explanation" class="alert alert-danger mt-3">
@@ -31,58 +30,10 @@
       <span class="d-flex align-items-center">席利用</span>
     </div>
     <div class="row mt-5">
-      <button type="reset" value="リセット", class="btn btn-warning col-2 col-md-2 offset-2">リセット</button>
+      <button type="reset" value="リセット", class="btn btn-warning col-2 col-md-2 offset-2", id="reset">リセット</button>
       <%= link_to 'キャンセル', user_path(current_user) ,class: "btn btn-secondary offset-1 col-3 col-md-2"%>
       <%= f.submit "更新", class: "btn btn-primary offset-1 col-2 col-md-2" %>
     </div>
-    
-   
-    
   <% end %>
 </div>
 
-<style>
-.btn-outline-warning:hover {
-  color: white;
-}
-
-.btn-warning {
-  border-color: #FFFF99;
-  background: #FFFF99;
-}
-
-.btn-warning:hover {
-  border-color: #FFFF00;
-  background: #FFFF00;
-}
-
- .font-size{
-   font-size: 30px;
- }
-</style>
-
-<style>
-/*  .btnspinner{*/
-/*    -ms-user-select: none;*/
-/*    -moz-user-select: -moz-none;*/
-/*    -khtml-user-select: none;*/
-/*    -webkit-user-select: none;*/
-/*    user-select: none;*/
-/*}*/
-
-.spinner_area input{
-    /*padding: 11px;*/
-    /*border: 1px solid #ccc;*/
-    /*border-radius: 4px;*/
-    /*font-size: 18px;*/
-    /*width: auto;*/
-    /*vertical-align: middle;*/
-    /* デフォルトのスピナーを消す */
-    -webkit-appearance: none;
-    -moz-appearance:textfield;
-}
-
-/*.spinner_area input[type="button"]{*/
-/*    cursor: pointer;*/
-/*}*/
-</style>

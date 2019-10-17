@@ -42,3 +42,17 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+#reset {
+  border-color: #FFFF99;
+  background: #FFFF99;
+}
+
+#reset:hover {
+  border-color: #FFFF00;
+  background: #FFFF00;
+}
+
+#font-size{
+   font-size: 30px;
+}
