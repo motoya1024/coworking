@@ -59,7 +59,7 @@
                           <!-- 予約繰り返し処理 -->
                           <% user.reservations.each do |reservation| %>
                             <!-- MS予約情報モーダル -->
-                            <% unless reservation.started_at <= Date.today %>
+                            <% unless reservation.finished_at <= DateTime.now %>
                               <%= link_to "#{l(reservation.started_at, format: :short)}
                                   ~#{l(reservation.finished_at, format: :short)}",
                                   edit_user_reservation_path(user, reservation),
