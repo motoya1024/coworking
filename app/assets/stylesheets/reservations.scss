@@ -2,15 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 /* reservation page */
+
+/*スクロールバーの幅*/
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/*スクロールバーのつまみ*/
+::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  background: #EEEEEE;
+}
+
+.reservation_schedule_form{
+  border: 0.5px solid #AAAAAA;
+}
 
 .reservation_week_form_table_body{
 	overflow: auto;
-  scroll-snap-type: y mandatory;
   height:700px;
-  border-right:1px solid #AAAAAA;
-  border-bottom:1px solid #AAAAAA;
+}
+
+.reservation_week_form_table{
+  border-bottom:0.5px solid #AAAAAA;
 }
 
 ul.time-field {
@@ -25,23 +40,28 @@ ul.time-field {
 
 .week-day-th {
   height: 35px;
-  min-width: 100px;
+  min-width: 80px;
   &:last-child {
     min-width: 16px;
+    border-left:0.5px solid #AAAAAA;
   }
 }
 
 .week-day-td {
   height: 35px;
-  width:120px;
+  width:145px;
   text-align:center;
+  border-left:0.5px solid #AAAAAA;
 }
 
 .time-schedule {
-  width: 120px;
+  width:145px;
   padding: 0;
   position:relative;
-  
+  border-left:0.5px solid #AAAAAA;
+  &:last-child {
+    border-right:0.5px solid #AAAAAA;
+  }
   ul {
     list-style: none;
     padding: 0;
@@ -99,23 +119,17 @@ ul.time-field {
 }
 
 .can_not_reservation{
- div{
-   background-color:#EEEEEE;
- }
+  div{
+    background-color:#EEEEEE;
+  }
 }
 
 .text-color{
   color:black;
 }
 
-table{
-  width: 100%;
-}
-
-.w-10 {
-  width: 10%;
-}
-
-.w-1{
-  width: 1%;
+@media screen and (max-width: 991px) {
+ .reserved{
+    font-size: 75%;
+  }
 }
