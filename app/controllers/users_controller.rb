@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "ユーザーの新規作成に成功しました。"
-      redirect_to @user
+      redirect_to root_path
     else
       render 'new'
     end
