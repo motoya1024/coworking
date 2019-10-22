@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20190829070650) do
 
   create_table "operations", force: :cascade do |t|
-    t.integer "all_seat"
+    t.integer "all_seat", limit: 1000
     t.integer "seat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
