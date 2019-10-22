@@ -1,4 +1,5 @@
 class OperationsController < ApplicationController
+   before_action :admin_user, only: [:edit]
     
   def edit
     @operation = Operation.find(1)
@@ -20,5 +21,9 @@ class OperationsController < ApplicationController
 
     def operation_params
       params.require(:operation).permit(:seat,:all_seat)
+    end
+    
+    def admin_user
+      redirect_to root_url unless current_user.admin?
     end
 end
