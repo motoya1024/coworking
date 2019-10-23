@@ -10,7 +10,11 @@
       <div class="modal-body">
         <div class="form-group row">
           <%= f.label "Name", class: "label-login col-2 offset-2 lead text-right mr-4" %>
-          <%= f.text_field :telmail_name, class: 'form-control col-6', value: @user.name, readonly: true %>
+          <% if @user.admin == false %>
+            <%= f.text_field :telmail_name, class: 'form-control col-6', value: @user.name, readonly: true %>
+          <% elsif @user.admin == true%>
+            <%= f.text_field :telmail_name, class: 'form-control col-6', value: @user.name %>
+          <% end %>
           <%= f.hidden_field :user_id, :value => @user.id %>
         </div>
         <div class="form-group row">
@@ -26,7 +30,7 @@
                                         datetime_separator: '%s'), '年', '月', '日',"時","分")
          
            %>
-          <%#= f.email_field :email, class: 'form-control col-6', placeholder: "メールアドレス" %>
+          
         </div>
         <div class="form-group row">
           <%= f.label "End time", class: "label-login col-2 offset-2 lead text-right mr-4" %>
