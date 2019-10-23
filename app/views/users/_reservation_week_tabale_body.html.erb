@@ -36,13 +36,12 @@
               <% if current_user.admin? || (!current_user.admin && current_user.id == reservation.user_id) %>
                 <%= link_to(user_reservation_url(@user,reservation),remote:true,class: 'text-color') do %>
                   <div class="reserved text-center text-truncate" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
-                    <%= reservation.user.name %>様</br>
+                    <%= reservation.telmail_name %>様</br>
                     <%= l(reservation.started_at,format: :time) %> ~ <%= l(reservation.finished_at,format: :time) %>
                   </div>
                 <% end %>
               <% else %>
                 <div class="reserved text-center" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
-                  <%= l(reservation.started_at,format: :time) %> ~ <%= l(reservation.finished_at,format: :time) %>
                 </div>
               <% end %>
             <% end %>
