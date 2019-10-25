@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_secure_password
   VALID_PASSWORD_REGEX = /\A(?=.*?[A-Z])[a-zA-Z\d]+\z/
   validates :password, presence: true, length: { minimum: 6, maximum: 20 },
-                    format: { with: VALID_PASSWORD_REGEX }
+                    format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
   
   validate :vali_test
   

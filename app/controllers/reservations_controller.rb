@@ -65,7 +65,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     Reservation.find(params[:id]).destroy
     flash[:success] = "削除しました。"
-    redirect_to user_url(@user)
+    redirect_to users_url(@user)
   end
   
   private 
