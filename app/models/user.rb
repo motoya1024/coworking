@@ -14,6 +14,15 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6, maximum: 20 },
                     format: { with: VALID_PASSWORD_REGEX }
   
+  validate :vali_test
+  
+  def vali_test
+    if errors[:password].any?
+      errors.messages.delete(:password) 
+      errors.add(:password, "は、半角英字で大文字1文字以上を含む、6文字以上20文字以内を入力してください。") 
+    end
+  end
+
   # 渡された文字列のハッシュ値を返します。
   def User.digest(string)
     cost = 
