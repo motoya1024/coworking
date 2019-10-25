@@ -14,12 +14,24 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6, maximum: 20 },
                     format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
   
-  validate :vali_test
+  validate :email_error_msg_make
+  validate :password_error_msg_make
   
-  def vali_test
+  def email_error_msg_make
+    if errors[:email].any?
+      errors.full_messages.each do |msg|
+        if msg == "Emailを入力してください"
+          errors.messages.delete(:email)
+          errors.add(:email, "を入力してください")
+        end
+      end
+    end
+  end
+  
+  def password_error_msg_make
     if errors[:password].any?
       errors.messages.delete(:password) 
-      errors.add(:password, "は、半角英数字で大文字1文字以上を含む、6文字以上20文字以内で入力してください。") 
+      errors.add(:password, "は、半角英数字で大文字1文字以上を含む、6文字以上20文字以内で入力してください") 
     end
   end
 
