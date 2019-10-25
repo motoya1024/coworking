@@ -57,7 +57,7 @@
                       <tr>
                         <td class="center">
                           <!-- 予約繰り返し処理 -->
-                          <% user.reservations.each do |reservation| %>
+                          <% user.reservations.order(:started_at).each do |reservation| %>
                             <!-- MS予約情報モーダル -->
                             <% unless reservation.finished_at <= DateTime.now %>
                               <%= link_to "#{l(reservation.started_at, format: :short)}
