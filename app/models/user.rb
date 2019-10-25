@@ -19,7 +19,7 @@ class User < ApplicationRecord
   def vali_test
     if errors[:password].any?
       errors.messages.delete(:password) 
-      errors.add(:password, "は、半角英字で大文字1文字以上を含む、6文字以上20文字以内を入力してください。") 
+      errors.add(:password, "は、半角英数字で大文字1文字以上を含む、6文字以上20文字以内で入力してください。") 
     end
   end
 
