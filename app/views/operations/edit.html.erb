@@ -16,18 +16,18 @@
   </p>
     <%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
     <div class="row lead">
-      <%= f.number_field :seat, value: @operation.seat,class:"form-main col-md-2 offset-lg-2 offset-md-2 input-lg offset-xl-3 font-size counter-total text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>
+      <%= f.number_field :seat, value: @operation.seat,min:0,class:"form-main col-md-2 offset-lg-2 offset-md-2 input-lg offset-xl-3 font-size counter-total text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>
       <div class="btn-group-vertical mr-3">
         <input type="button" value="＋" class="btnspinner btn page-link text-dark d-inline-block" data-cal="1" data-target=".counter-total">
         <input type="button" value="－" class="btnspinner btn page-link text-dark d-inline-block" data-cal="-1" data-target=".counter-total">
       </div>
-      <span class="d-flex align-items-center mr-3">/</span>
-      <%= f.number_field :all_seat, value: @operation.all_seat,max:1000,class:"form-main col-md-2 input-lg font-size counter-now text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
+      <span class="d-flex align-items-center mr-3">席利用中/</span>
+      <%= f.number_field :all_seat, value: @operation.all_seat,max:100,class:"form-main col-md-2 input-lg font-size counter-now text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
       <div class="btn-group-vertical mr-3">
         <input type="button" value="＋" class="btnspinner btn page-link text-dark d-inline-block" data-cal="1" data-target=".counter-now">
         <input type="button" value="－" class="btnspinner btn page-link text-dark d-inline-block" data-cal="-1" data-target=".counter-now">
       </div>
-      <span class="d-flex align-items-center">席</span>
+      <span class="d-flex align-items-center">席中</span>
     </div>
     <div class="row mt-5">
       <button type="reset" value="リセット", class="btn btn-warning col-2 col-md-2 offset-2", id="reset">リセット</button>
