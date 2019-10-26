@@ -41,7 +41,7 @@
           <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">
             キャンセル
           </button>
-          <%= link_to "削除", user_reservation_path(@user, @reservation), method: :delete,
+          <%= link_to "削除！", user_reservation_path(@user, @reservation), method: :delete,
                 data: { confirm: "#{@user.name}様の予約情報を削除してよろしいですか？" }, class: "btn btn-danger px-4 mx-3" %>
         </span>
       </div><!-- /.modal-footer -->
