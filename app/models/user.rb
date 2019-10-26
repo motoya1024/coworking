@@ -10,7 +10,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   has_secure_password
-  VALID_PASSWORD_REGEX = /\A(?=.*?[A-Z])[a-zA-Z\d]+\z/
+  VALID_PASSWORD_REGEX = /\A[a-zA-Z\d]+\z/
   validates :password, presence: true, length: { minimum: 6, maximum: 20 },
                     format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
   
@@ -31,7 +31,7 @@ class User < ApplicationRecord
   def password_error_msg_make
     if errors[:password].any?
       errors.messages.delete(:password) 
-      errors.add(:password, "は、半角英数字で大文字1文字以上を含む、6文字以上20文字以内で入力してください") 
+      errors.add(:password, "は、半角英数字で6文字以上20文字以内で入力してください") 
     end
   end
 
