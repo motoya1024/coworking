@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     get 'edit_info', on: :member
     patch 'update_info', on: :member
     resources :reservations
-  end 
+  end
 end

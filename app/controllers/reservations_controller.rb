@@ -65,9 +65,13 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     Reservation.find(params[:id]).destroy
     flash[:success] = "削除しました。"
-    redirect_to users_url(@user)
+    if params[:commit] == "削除"
+      redirect_to users_url(@user)
+    else
+      redirect_to user_url(@user)
+    end
   end
-  
+
   private 
   
     def reservation_params
