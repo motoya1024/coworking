@@ -1,5 +1,6 @@
 class OperationsController < ApplicationController
-   before_action :admin_user, only: [:edit]
+  before_action :logged_in_user, only: [:edit]
+  before_action :admin_user, only: [:edit]
     
   def edit
     @operation = Operation.find(1)
@@ -21,6 +22,14 @@ class OperationsController < ApplicationController
 
     def operation_params
       params.require(:operation).permit(:seat,:all_seat)
+    end
+    
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "ログインしてください。"
+        redirect_to root_path
+      end
     end
     
     def admin_user
