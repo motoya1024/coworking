@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @first_day = Date.current
     set_reservation_schedule
-    @login_user_reservations = Reservation.where(user_id: @user.id).where(started_at: Time.zone.today..Float::INFINITY).order(started_at: :asc)
+    @login_user_reservations = Reservation.where(user_id: @user.id).where(started_at: Time.zone.now..Float::INFINITY).order(started_at: :asc)
     
   end
   
