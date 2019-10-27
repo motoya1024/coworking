@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:show, :index]
+  before_action :correct_user,   only: [:show]
+  before_action :admin_user,     only: [:index, :edit_info, :update_info]
+  before_action :correct_or_admin_user, only: [:destroy]
   
   def new
     @user = User.new
@@ -71,5 +75,32 @@ class UsersController < ApplicationController
       @reservations = Reservation.where("finished_at > ?",Time.zone.now)
       @times = 48.times.map.each_with_index {|i| Time.parse("0:00")+30.minutes*i}
       @time_number = 24.times.map.each_with_index {|i| l(Time.parse("0:00")+1.hours*i,format: :shorttime)}
+    end
+    
+  # beforeアクション
+
+    # ログイン済みユーザーか確認
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "ログインしてください。"
+        redirect_to root_path
+      end
+    end
+
+    # 正しいユーザーかどうか確認
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
+    
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
+    
+    # 正しいユーザー、または、管理者ユーザーかどうか確認
+    def correct_or_admin_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user) or current_user.admin?
     end
 end
