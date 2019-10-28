@@ -9,6 +9,7 @@ class Operation < ApplicationRecord
            
     validates :all_seat, presence: true
     validates :all_seat, :numericality => {
-              :greater_than_or_equal_to => 0
+              :greater_than_or_equal_to => 0,
+              :less_than_or_equal_to => 100
            }
 end
