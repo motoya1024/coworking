@@ -41,7 +41,7 @@
             キャンセル
           </button>
           <%= f.submit yield(:button_text), class: "btn btn-primary px-4 mx-3" %>
-          <%= link_to "削除", user_reservation_path(@user, @reservation), method: :delete,
+          <%= link_to "削除", user_reservation_path(@user, @reservation, from_page: "Users"), method: :delete,
                 data: { confirm: "#{@user.name}様の予約情報を削除してよろしいですか？" }, class: "btn btn-danger px-4 mx-3" %>
         </span>
       </div><!-- /.modal-footer -->
