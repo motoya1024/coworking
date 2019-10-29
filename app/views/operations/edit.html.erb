@@ -1,28 +1,28 @@
 <% provide(:title, '利用状況更新') %>
 
 <div class="container text-center">
-    <% if @operation.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger mt-3">
-    <ul>
-      <% @operation.errors.full_messages.each do |message| %>
-        <div class="form-error"><%= message %></div>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @operation.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger mt-3">
+      <ul>
+        <% @operation.errors.full_messages.each do |message| %>
+          <div class="form-error"><%= message %></div>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <h2 class="d-inline-block border-bottom border-dark my-5">SEAT UPDATE</h1>
   <p class="mb-5">
     席の利用状況を編集することができます。
   </p>
     <%= form_with(model: @operation,url: operations_update_path(@operation),local: true, method: :patch) do |f| %>
     <div class="row lead">
-      <%= f.number_field :seat, value: @operation.seat,data:{min:"0",max:"100"},class:"form-main col-md-2 offset-lg-2 offset-md-2 input-lg offset-xl-3 font-size counter-total text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>
+      <%= f.number_field :seat, value: @operation.seat,data:{min:"0",max:"100"}, min: 0, max: 100, class:"form-main col-md-2 offset-lg-2 offset-md-2 input-lg offset-xl-3 font-size counter-total text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190" %>
       <div class="btn-group-vertical mr-3">
         <input type="button" value="＋" class="btnspinner btn page-link text-dark d-inline-block" data-cal="1" data-target=".counter-total">
         <input type="button" value="－" class="btnspinner btn page-link text-dark d-inline-block" data-cal="-1" data-target=".counter-total">
       </div>
       <span class="d-flex align-items-center mr-3">席利用中/</span>
-      <%= f.number_field :all_seat, value: @operation.all_seat,data:{min:"0",max:"100"},class:"form-main col-md-2 input-lg font-size counter-now text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
+      <%= f.number_field :all_seat, value: @operation.all_seat,data:{min:"1",max:"100"}, min: 1, max: 100, class:"form-main col-md-2 input-lg font-size counter-now text-right my-auto",onkeydown:"return event.keyCode !== 69 && event.keyCode !== 189 && event.keyCode !== 187 && event.keyCode !== 190"%>
       <div class="btn-group-vertical mr-3">
         <input type="button" value="＋" class="btnspinner btn page-link text-dark d-inline-block" data-cal="1" data-target=".counter-now">
         <input type="button" value="－" class="btnspinner btn page-link text-dark d-inline-block" data-cal="-1" data-target=".counter-now">

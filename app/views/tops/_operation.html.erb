@@ -1,5 +1,10 @@
-<% @kado_ritsu = 100 * @operation.seat / @operation.all_seat %>
-
+<!-- 稼働率の計算-->
+<% if @operation.all_seat <= 0 %>
+  <% @kado_ritsu = 0 %>
+<% else %>
+  <% @kado_ritsu = 100 * @operation.seat / @operation.all_seat %>
+<% end %>
+<!-- プログレスバーのバックカラーを設定 -->
 <% if @kado_ritsu <= 20 %>
   <% @bar_color = "bg-primary" %>
 <% elsif @kado_ritsu <= 40 %>
