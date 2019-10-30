@@ -6,23 +6,21 @@
     <h2 class="d-inline-block border-bottom border-dark mb-5">RESERVATION</h2>
     <p class="mb-0">ご自身のMeeting Spaceの予約状況を確認することができます。</p>
     <p class="mb-5">また、カレンダーで日時を選択することで、Meeting Spaceを予約することができます。</p>
-    <% if @user.admin == false %>
-      <div class="card border-light w-50 mx-auto">
-        <strong class="card-header">
-          <%= @user.name %>様　予約状況一覧
-        </strong>
-        <% @login_user_reservations.each do |login_user_reservation| %>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex">
-              <span class="mr-auto"><%= l(login_user_reservation.started_at, format: :index) %>〜<%= l(login_user_reservation.finished_at, format: :time) %></span>
-              <%= link_to(user_reservation_url(@user,login_user_reservation), class: "btn btn-outline-danger d-block d-md-inline-block px-2 py-1 ml-auto", remote: true) do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
-            </li>
-          </ul>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="card border-light w-50 mx-auto">
+      <strong class="card-header">
+        <%= @user.name %>様　予約状況一覧
+      </strong>
+      <% @login_user_reservations.each do |login_user_reservation| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex">
+            <span class="mr-auto"><%= l(login_user_reservation.started_at, format: :index) %>〜<%= l(login_user_reservation.finished_at, format: :time) %></span>
+            <%= link_to(user_reservation_url(@user,login_user_reservation), class: "btn btn-outline-danger d-block d-md-inline-block px-2 py-1 ml-auto", remote: true) do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
     <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
   </div>
   <hr class="mb-5">
