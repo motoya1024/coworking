@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :logged_out_user, only: [:new]
   
   def new
   end
@@ -23,4 +24,13 @@ class SessionsController < ApplicationController
     flash[:success] = 'ログアウトしました。'
     redirect_to root_url
   end
+  
+# beforeアクション
+
+  # ログアウトユーザーか確認
+    def logged_out_user
+      if logged_in?
+        redirect_to root_path
+      end
+    end
 end
