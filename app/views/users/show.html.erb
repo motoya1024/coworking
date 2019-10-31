@@ -6,38 +6,35 @@
     <h2 class="d-inline-block border-bottom border-dark mb-5">RESERVATION</h2>
     <p class="mb-0">ご自身のMeeting Spaceの予約状況を確認することができます。</p>
     <p class="mb-5">また、カレンダーで日時を選択することで、Meeting Spaceを予約することができます。</p>
-    <% if @user.admin == false %>
-      <div class="card border-light vw-100 mx-auto">
-        <strong class="card-header">
-          <%= @user.name %>様　予約状況一覧
-        </strong>
-        <% @login_user_reservations.each do |login_user_reservation| %>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex">
-              <span class="mr-auto my-auto"><%= l(login_user_reservation.started_at, format: :index) %>〜<%= l(login_user_reservation.finished_at, format: :time) %></span>
-              <%= link_to(user_reservation_url(@user,login_user_reservation), class: "btn btn-outline-danger d-block d-md-inline-block px-2 py-1 ml-auto", remote: true) do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
-            </li>
-          </ul>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="card border-light vw-100 mx-auto">
+      <strong class="card-header">
+        <%= @user.name %>様　予約状況一覧
+      </strong>
+      <% @login_user_reservations.each do |login_user_reservation| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex">
+            <span class="mr-auto my-auto"><%= l(login_user_reservation.started_at, format: :index) %>〜<%= l(login_user_reservation.finished_at, format: :time) %></span>
+            <%= link_to(user_reservation_url(@user,login_user_reservation), class: "btn btn-outline-danger d-block d-md-inline-block px-2 py-1 ml-auto", remote: true) do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
     <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
   </div>
   <hr class="mb-5">
   <div class="row">
-  <div class="reservation_week_form">
-    <%= render 'reservation_week' %>
-  </div>
-  
-  <div class="input-group date d-inline col-12 col-sm-1 my-auto text-center" id="datetimepicker" data-target-input="nearest">
-    <input type="hidden" class="datetimepicker-input" data-target="#datetimepicker"/>
-    <div class="input-group-append d-inline" data-target="#datetimepicker" data-toggle="datetimepicker">
-      <button type="submit" class="ml-3" id="callender"><i class="far fa-calendar-alt btn btn-secondary"></i></button>
+    <div class="reservation_week_form">
+      <%= render 'reservation_week' %>
     </div>
-  </div>
-  
+    
+    <div class="input-group date d-inline col-12 col-sm-1 my-auto text-center" id="datetimepicker" data-target-input="nearest">
+      <input type="hidden" class="datetimepicker-input" data-target="#datetimepicker"/>
+      <div class="input-group-append d-inline" data-target="#datetimepicker" data-toggle="datetimepicker">
+        <button type="submit" class="ml-3" id="callender"><i class="far fa-calendar-alt btn btn-secondary"></i></button>
+      </div>
+    </div>
   </div>
   
   <div class="reservation_status_list">
