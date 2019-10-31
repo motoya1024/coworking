@@ -9,20 +9,20 @@
     <%= form_with(model: @user, url: update_info_user_path(@user), local: true, method: :patch) do |f| %>
       <div class="modal-body">
         <div class="form-group row">
-          <%= f.label :name, class: "label-login col-2 offset-2 lead text-right mr-4" %>
-          <%= f.text_field :name, class: 'form-control col-6', placeholder: "名前" %>
+          <%= f.label :name, class: "label-login col-sm-2 lead text-center mr-4 text-sm-right offset-sm-2" %>
+          <%= f.text_field :name, class: 'form-control col-sm-6', placeholder: "名前" %>
         </div>
         <div class="form-group row">
-          <%= f.label :email, class: "label-login col-2 offset-2 lead text-right mr-4" %>
-          <%= f.email_field :email, class: 'form-control col-6', placeholder: "メールアドレス" %>
+          <%= f.label :email, class: "label-login col-sm-2 lead text-center mr-4 text-sm-right offset-sm-2" %>
+          <%= f.email_field :email, class: 'form-control col-sm-6', placeholder: "メールアドレス" %>
         </div>
         <div class="form-group row">
-          <%= f.label :password, class: "label-login col-2 offset-2 lead text-right mr-4" %>
-          <%= f.password_field :password, class: 'form-control col-6', placeholder: "パスワード" %>
+          <%= f.label :password, class: "label-login col-sm-2 lead text-center mr-4 text-sm-right offset-sm-2" %>
+          <%= f.password_field :password, class: 'form-control col-sm-6', placeholder: "パスワード" %>
         </div>
         <div class="form-group row">
-          <%= f.label :password_confirmation, class: "label-login col-3 offset-1 lead text-right mr-4" %>
-          <%= f.password_field :password_confirmation, class: 'form-control col-6', placeholder: "パスワード再入力" %>
+          <%= f.label :password_confirmation, class: "label-login col-sm-2 lead text-center mr-4 text-sm-right offset-sm-2" %>
+          <%= f.password_field :password_confirmation, class: 'form-control col-sm-6', placeholder: "パスワード再入力" %>
         </div>
       </div><!-- /.modal-body -->
       <div class="modal-footer">
