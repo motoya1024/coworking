@@ -16,6 +16,10 @@
   color: black;
 }
 
+@media screen and (max-width:767px) {
+  .logo { width: 80%; }
+}
+
 /* TOP */
 
 .bg-light-gray {
