@@ -24,7 +24,6 @@
               <% else %>
                 <li class="time-schedule-cell post_time"></li>
               <% end %>
-              <div id="new_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
             <% end %>
           </ul>
           <% @day_reservations = @reservations.where(started_at: week_day.in_time_zone.all_day)
