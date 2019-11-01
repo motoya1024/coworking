@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.paginate(page: params[:page], per_page: 20).search(params[:search])
+    @users = User.paginate(page: params[:page], per_page: 20).search(params[:search]).order(id: :asc)
   end
   
   def show
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @first_day = Date.current
     set_reservation_schedule
     @login_user_reservations = Reservation.where(user_id: @user.id).where(started_at: Time.zone.now..Float::INFINITY).order(started_at: :asc)
-    
   end
   
   def change_show 
@@ -53,11 +52,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       flash[:success] = "#{@user.name}様の基本情報を更新しました。"
     else
-      if @user.name.present?
-        flash[:danger] = "#{@user.name}様の更新は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
-      else
-        flash[:danger] = "更新は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
-      end
+      flash[:danger] = "基本情報の更新は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
     end
     redirect_to users_url
   end
