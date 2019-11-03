@@ -4,17 +4,6 @@
 
 /* reservation page */
 
-/*スクロールバーの幅*/
-::-webkit-scrollbar {
-    width: 15px;
-}
-
-/*スクロールバーのつまみ*/
-::-webkit-scrollbar-thumb {
-  border-radius: 30px;
-  background: #EEEEEE;
-}
-
 .reservation_schedule_form{
   border: 0.5px solid #AAAAAA;
 }
@@ -25,6 +14,8 @@
 }
 
 .reservation_week_form_table{
+  width:100%;
+  padding-right:15px;
   border-bottom:0.5px solid #AAAAAA;
 }
 
@@ -41,10 +32,6 @@ ul.time-field {
 .week-day-th {
   height: 35px;
   min-width: 80px;
-  &:last-child {
-    min-width: 16px;
-    border-left:0.5px solid #AAAAAA;
-  }
 }
 
 .week-day-td {
@@ -52,6 +39,9 @@ ul.time-field {
   width:145px;
   text-align:center;
   border-left:0.5px solid #AAAAAA;
+  &:last-child {
+    border-right:0.5px solid #AAAAAA;
+  }
 }
 
 .time-schedule {
@@ -131,5 +121,36 @@ ul.time-field {
 @media screen and (max-width: 991px) {
  .reserved{
     font-size: 75%;
+  }
+ .week-day-th {
+    min-width: 50px;
+ }
+}
+
+@media screen and (max-device-width: 1024px) {
+ .reservation_week_form_table{
+    padding-right:initial;
+ }
+ .week-day-td {
+   &:last-child {
+     border-right:none;
+   }
+ }
+ .time-schedule {
+    &:last-child {
+      border-right:none;
+    }
+ }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+   _::-webkit-full-page-media, _:future, :root .reservation_week_form_table {
+        padding-right:15px;
+    }
+}
+
+@-moz-document url-prefix(){
+  .reserved{
+    border-left:0.5px solid #AAAAAA;
   }
 }
