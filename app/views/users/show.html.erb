@@ -74,6 +74,14 @@ $(function(){
                 }
             });
     });
+　var ua = navigator.userAgent.toLowerCase();
+ 
+　isMac =　ua.indexOf('windows') > -1;
+
+  if(isMac && window.matchMedia( "(min-device-width: 1025px)" ).matches) {
+    $('.reservation_week_form_table').css('padding-right',"16.9px");
+  }
+  
 });    
     
 </script>

@@ -1,8 +1,8 @@
 <!-- 7回繰り返す -->
-<table border="0" style="border-collapse: collapse">
-  <tbody>
+<table>
+  <tbody class="d-block">
     <tr>
-      <th class="week-day-th w-10">
+      <td class="week-day-th">
         <div>
           <ul class="time-field text-center">
             <% @time_number.each do |time_number| %>
@@ -10,7 +10,7 @@
             <% end %>
           </ul>
         </div>
-      </th>
+      </td>
       <% @week_day.each do |week_day| %>
         <td class="time-schedule">
           <div class="top_vacant"></div>
