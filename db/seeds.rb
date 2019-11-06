@@ -1,7 +1,7 @@
-User.create!(name: "わい管理者や！",
+User.create!(name: "管理者",
              email: "admin@email.com",
-             password: "Password",
-             password_confirmation: "Password",
+             password: "password",
+             password_confirmation: "password",
              admin: true)
 
 Operation.create!(seat: 5,
@@ -10,17 +10,9 @@ Operation.create!(seat: 5,
 60.times do |n|
   name  = Faker::Name.name
   email = "sample-#{n+1}@email.com"
-  password = "Password"
+  password = "password"
   User.create!(name: name,
                email: email,
-               password: "Password",
-               password_confirmation: "Password")
-end
-
-users = User.order(:created_at).take(3)
-5.times do |n|
- meeting_on = Date.current + 1
- started_at = Time.current.change(hour: 10, min: 0, sec: 0)
- finished_at = Time.current.change(hour: 18, min: 0, sec: 0)
- users.each { |user| user.reservations.create!(meeting_on: meeting_on, started_at: started_at, finished_at: finished_at) }
+               password: password,
+               password_confirmation: password)
 end
