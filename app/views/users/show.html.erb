@@ -1,12 +1,12 @@
 <% provide(:title, 'ミーティングスペース予約画面') %>
 
-<div class="container">  
+<div class="container mb-5">  
   <div class="text-center my-5">
     <p class="mb-0">Meeting Spaceの予約</p>
     <h2 class="d-inline-block border-bottom border-dark mb-5">RESERVATION</h2>
     <p class="mb-0">ご自身のMeeting Spaceの予約状況を確認することができます。</p>
     <p class="mb-5">また、カレンダーで日時を選択することで、Meeting Spaceを予約することができます。</p>
-    <div class="card border-light vw-100 mx-auto">
+    <div class="card border-light card-width mx-auto">
       <strong class="card-header">
         <%= @user.name %>様　予約状況一覧
       </strong>
@@ -23,13 +23,12 @@
     </div>
     <div id="show_user_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
   </div>
-  <hr class="mb-5">
-  <div class="row">
+  <div class="d-flex mb-3">
     <div class="reservation_week_form">
       <%= render 'reservation_week' %>
     </div>
     
-    <div class="input-group date d-inline col-12 col-sm-1 my-auto text-center" id="datetimepicker" data-target-input="nearest">
+    <div class="input-group date d-inline col-1 my-auto text-center" id="datetimepicker" data-target-input="nearest">
       <input type="hidden" class="datetimepicker-input" data-target="#datetimepicker"/>
       <div class="input-group-append d-inline" data-target="#datetimepicker" data-toggle="datetimepicker">
         <button type="submit" class="ml-3" id="callender"><i class="far fa-calendar-alt btn btn-secondary"></i></button>
@@ -37,16 +36,6 @@
     </div>
   </div>
   
-  <div class="reservation_status_list">
-    <div class="can_reservation"> 
-      <div></div>
-      <p>予約できます</p>
-    </div>
-    <div class="can_not_reservation">
-      <div></div>
-      <p>予約できません</p>
-    </div>
-  </div>
   <div class="reservation_schedule_form table-responsive rounded rounded-lg">
     <div class="reservation_week_form_table">
       <%= render 'reservation_week_tabale_th' %>
@@ -81,6 +70,8 @@ $(function(){
   if(isMac && window.matchMedia( "(min-device-width: 1025px)" ).matches) {
     $('.reservation_week_form_table').css('padding-right',"16.9px");
   }
+  
+  $('.reservation_week_form_table_body').scrollTop(600);
   
 });    
     
