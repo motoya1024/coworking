@@ -154,3 +154,7 @@ ul.time-field {
     border-left:0.5px solid #AAAAAA;
   }
 }
+
+@media screen and (min-width:767px) {
+  .card-width { width: 400px; }
+}
