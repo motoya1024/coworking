@@ -29,9 +29,8 @@
       </div>
       <span class="d-flex align-items-center">席中</span>
     </div>
-    <div class="row mt-5">
-      <button type="reset" value="リセット", class="btn btn-warning col-2 col-md-2 offset-2", id="reset">リセット</button>
-      <%= link_to 'キャンセル', user_path(current_user) ,class: "btn btn-secondary offset-1 col-3 col-md-2"%>
+    <div class="row mt-5 justify-content-center">
+      <%= link_to 'キャンセル', user_path(current_user) ,class: "btn btn-secondary col-3 col-md-2"%>
       <%= f.submit "更新", class: "btn btn-primary offset-1 col-2 col-md-2" %>
     </div>
   <% end %>
