@@ -9,7 +9,7 @@
 }
 
 .reservation_week_form_table_body{
-	overflow: auto;
+	overflow-y: scroll;
   height:700px;
 }
 
@@ -72,7 +72,7 @@ ul.time-field {
 }
 
 .post_time{
-  background-color:#EEEEEE;
+  background-color:#DDDDDD;
 }
 .week_today_color{
   background-color:#00BB00;
@@ -82,14 +82,14 @@ ul.time-field {
 .reserved{
   position:absolute;
   width:100%;
-  background-color:#EEEEEE;
+  background-color:#DDDDDD;
   border-bottom: solid 1px #AAAAAA;
   font-size: 80%;
 }
 
 .top_vacant{
   height:22px;
-  background-color:#EEEEEE;
+  background-color:#DDDDDD;
 }
 
 .reservation_status_list{
