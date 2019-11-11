@@ -13,8 +13,12 @@
       <% @login_user_reservations.each do |login_user_reservation| %>
         <ul class="list-group list-group-flush">
           <li class="list-group-item d-flex">
-            <span class="mr-auto my-auto"><%= l(login_user_reservation.started_at, format: :index) %>〜<%= l(login_user_reservation.finished_at, format: :time) %></span>
-            <%= link_to(user_reservation_url(@user,login_user_reservation), class: "btn btn-outline-danger d-block d-md-inline-block px-2 py-1 ml-auto", remote: true) do %>
+            <span class="mr-auto my-auto">
+              <%= @reserv_info_from = l(login_user_reservation.started_at, format: :index) %>〜<%= @reserv_info_to = l(login_user_reservation.finished_at, format: :time) %>
+            </span>
+              <%= link_to(user_reservation_path(@user, login_user_reservation), method: :delete, \
+                          data: {confirm: "【#{@reserv_info_from}〜#{@reserv_info_to}】\nの予約情報を削除してよろしいですか？" }, \
+                          class: "btn btn-outline-danger d-block d-md-inline-block px-2 py-1 ml-auto") do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
           </li>
