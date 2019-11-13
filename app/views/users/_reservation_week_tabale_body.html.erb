@@ -13,7 +13,6 @@
       </td>
       <% @week_day.each do |week_day| %>
         <td class="time-schedule">
-          <div class="top_vacant"></div>
           <ul>
             <% @times.each do |time| %>
               <% datetime = Time.zone.local(week_day.year,week_day.month,week_day.day,time.hour,time.min) %> 

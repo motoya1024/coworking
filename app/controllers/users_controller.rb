@@ -73,7 +73,7 @@ class UsersController < ApplicationController
       @week_day = (@first_day..@first_day.since(7.days))
       @reservations = Reservation.where("finished_at > ?",Time.zone.now)
       @times = 48.times.map.each_with_index {|i| Time.parse("0:00")+30.minutes*i}
-      @time_number = 24.times.map.each_with_index {|i| l(Time.parse("0:00")+1.hours*i,format: :shorttime)}
+      @time_number = 23.times.map.each_with_index {|i| l(Time.parse("1:00")+1.hours*i,format: :shorttime)}
     end
     
   # beforeアクション

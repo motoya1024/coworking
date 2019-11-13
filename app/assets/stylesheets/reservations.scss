@@ -22,7 +22,8 @@
 ul.time-field {
   list-style: none;
   padding: 0;
-  text-align:right;
+  margin-top: 50px;
+  margin-bottom: 0;
   li {
     height: 74px;
     min-width: 40px;
@@ -55,11 +56,17 @@ ul.time-field {
   ul {
     list-style: none;
     padding: 0;
+    margin-bottom:0;
   }
 }
 
 .time-schedule-cell {
   height: 37px;
+  &:last-child {
+    a {
+      border-bottom:none;
+    }
+  }
   a {
     display: block;
     width: 100%;
