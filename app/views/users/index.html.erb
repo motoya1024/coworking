@@ -21,7 +21,6 @@
         <tr>
           <th class="center">名前</th>
           <th class="center">メールアドレス</th>
-          <th class="center">予約詳細</th>
           <th class="center">編集・削除</th>
         </tr>
       </thead>
@@ -30,50 +29,6 @@
           <tr>
             <td class="center"><%= user.name %></td>
             <td class="center"><%= user.email %></td>
-            <td class="center">
-            <% if user.reservations.where("started_at > ?", Date.today).present? %>
-              <!-- アコーディオンスイッチ-->
-              <button type="button" class="btn btn-outline-success collapsed px-4"
-              data-toggle="collapse" data-target="#meeting<%= user.id %>" aria-expanded="false">
-                表示
-              </button>
-            <% else %>
-              <button type="button" class="btn btn-outline-success collapsed px-4" style="display: none;"
-              data-toggle="collapse" data-target="#meeting<%= user.id %>" aria-expanded="false">
-                表示
-              </button>
-            <% end %>
-            <!-- アコーディオン本体-->
-            <div id="meeting<%= user.id %>" class="collapse" aria-expanded="false">
-              <div class="panel panel-default">
-                <div class="panel-body ">
-                  <table class="table table-bordered table-condensed table-hover">
-                    <thead>
-                      <tr>
-                        <th class="center"><%= "開始時間" %> / <%= "終了時間" %></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="center">
-                          <!-- 予約繰り返し処理 -->
-                          <% user.reservations.order(:started_at).each do |reservation| %>
-                            <!-- MS予約情報モーダル -->
-                            <% unless reservation.finished_at <= DateTime.now %>
-                              <%= link_to "#{l(reservation.started_at, format: :short)}
-                                  ~#{l(reservation.finished_at, format: :short)}",
-                                  edit_user_reservation_path(user, reservation),
-                                  remote: true %><br>
-                            <% end %>
-                          <% end %>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </td>
           <!-- ユーザー情報モーダル -->
           <td class="center">
             <% if current_user.admin? && !current_user?(user) %>
@@ -95,5 +50,4 @@
 
 <!-- ユーザー情報モーダル表示 -->
 <div id="edit-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<!-- MS予約情報モーダル表示 -->
-<div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
