@@ -21,6 +21,8 @@
           <%= f.label "StartTime", class: "label-login col-sm-2 lead text-center mr-4 text-sm-right offset-sm-1" %>
           <%= raw sprintf(f.datetime_select(
                                         :started_at, 
+                                        :start_year => Time.now.year,
+                                        :end_year => Time.now.since(2.month).year,
                                         default: Time.zone.local(@week_day.to_date.year,@week_day.to_date.month,@week_day.to_date.day,
                                                                 @selected_started_at.to_time.hour,@selected_started_at.to_time.min),
                                         minute_step: 30,
@@ -30,6 +32,7 @@
                                         datetime_separator: '%s'), '年', '月', '日',"時")
            %>分
         </div>
+        <div class="error-message text-danger"></div>
         <div class="form-group row">
           <%= f.label "EndTime", class: "label-login col-sm-2 lead text-center mr-4 text-sm-right offset-sm-1" %>
           <%= raw sprintf(f.datetime_select(
@@ -49,9 +52,65 @@
           <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">
             キャンセル
           </button>
-          <%= f.submit yield(:button_text), class: "btn btn-primary px-4 mx-3" %>
+          <%= f.submit yield(:button_text), class: "btn btn-primary px-4 mx-3 disabled" %>
         </span>
       </div><!-- /.modal-footer -->
     <% end %>
   </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
+<script>
+  var now = new Date();
+  
+  function select_date(){
+    var year = $("#reservation_started_at_1i").val();
+    var month = $("#reservation_started_at_2i").val() - 1;
+    var day = $("#reservation_started_at_3i").val();
+    var hour = $("#reservation_started_at_4i").val();
+    var min = $("#reservation_started_at_5i").val();
+    var date = new Date(year, month, day, hour, min);
+    return date;
+  }
+  
+  var two_month_date = new Date(now.getFullYear(), now.getMonth()+2, now.getDate(), now.getHours(), now.getMinutes());
+
+  function alert(now,date,two_month_date){
+    if(now > date){
+      $(".error-message").text("過去の時間は予約できません");
+      $(".disabled").attr('disabled', true);
+    }else if(date > two_month_date){
+      $(".error-message").text("２ヶ月先は予約できません");
+      $(".disabled").attr('disabled', true);
+    }else{
+      $(".error-message").text("");
+      $(".disabled").attr('disabled', false);
+    }
+  }
+
+  $("#reservation_started_at_1i").change(function() {
+    select_date();
+    console.log(select_date());
+    alert(now,select_date(),two_month_date);
+  });
+  
+  $("#reservation_started_at_2i").change(function() {
+    select_date();
+    console.log(select_date());
+    alert(now,select_date(),two_month_date);
+  });
+  
+  $("#reservation_started_at_3i").change(function() {
+    select_date();
+    alert(now,select_date(),two_month_date);
+  });
+  
+  $("#reservation_started_at_4i").change(function() {
+    select_date();
+    alert(now,select_date(),two_month_date);
+  });
+  
+  $("#reservation_started_at_5i").change(function() {
+    select_date();
+    alert(now,select_date(),two_month_date);
+  });
+  
+</script>
