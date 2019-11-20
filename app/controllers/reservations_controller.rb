@@ -22,6 +22,8 @@ class ReservationsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @reservation = Reservation.new(customer_reservation_params)
+    @usage_time = params[:usage_time].to_i
+    @reservation.finished_at = @reservation.started_at+@usage_time.minutes
     if @reservation.save
       flash[:success] = "予約が完了しました。"
     else
@@ -38,12 +40,15 @@ class ReservationsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @reservation = Reservation.find(params[:id])
+    @usage_time = params[:usage_time].to_i
+    @update_reservation = Reservation.new(reservation_params)
+    @reservation.finished_at = @update_reservation.started_at+@usage_time.minutes
     if @reservation.update_attributes(reservation_params)
       flash[:success] = "#{@user.name}様の予約情報を更新しました。"
     else
       flash[:danger] = "予約情報の更新は失敗しました。"
     end
-      redirect_to users_url
+      redirect_to @user
   end
   
   def show
@@ -65,11 +70,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     Reservation.find(params[:id]).destroy
     flash[:success] = "削除しました。"
-    if params[:from_page] == "Users"
-      redirect_to users_url(@user)
-    else
-      redirect_to user_url(@user)
-    end
+    redirect_to user_url(@user)
   end
 
   private 
