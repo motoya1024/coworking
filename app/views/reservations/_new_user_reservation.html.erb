@@ -32,7 +32,7 @@
                                         datetime_separator: '%s'), '年', '月', '日',"時")
            %>分
         </div>
-        <div class="error-message text-danger"></div>
+        <div class="error-message text-danger" style="text-align:center;"></div>
         <div class="form-group row">
           <%= f.label "Usage time", class: "label-login col-sm-2 lead text-center mr-4 text-sm-right offset-sm-1" %>
           <%= select_tag('usage_time',options_for_select([[30, 30], [60, 60], [90, 90], [120, 120]]))%>分
