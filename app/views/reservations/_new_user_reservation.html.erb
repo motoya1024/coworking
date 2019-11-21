@@ -77,13 +77,11 @@
   }
   $("#reservation_started_at_1i").change(function() {
     select_date();
-    console.log(select_date());
     alert(now,select_date(),two_month_date);
   });
   
   $("#reservation_started_at_2i").change(function() {
     select_date();
-    console.log(select_date());
     alert(now,select_date(),two_month_date);
   });
   
@@ -100,6 +98,10 @@
   $("#reservation_started_at_5i").change(function() {
     select_date();
     alert(now,select_date(),two_month_date);
+  });
+  
+  $(document).on('hidden.bs.modal', '.modal', function(){
+    $(this).removeData('bs.modal').empty();
   });
   
 </script>
