@@ -33,16 +33,16 @@
           <%= select_tag('usage_time',options_for_select([[30, 30], [60, 60], [90, 90], [120, 120]]))%>分
         </div>
       </div><!-- /.modal-body -->
-      <div class="modal-footer">
+      <div class="modal-footer pb-3">
         <span class="mx-auto">
           <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">
             キャンセル
           </button>
-          <%= f.submit yield(:button_text), class: "btn btn-primary px-4 mx-3 disabled" %>
-          <%= link_to "削除", user_reservation_path(@user, @reservation, from_page: "Users"), method: :delete,
-                data: { confirm: "#{@user.name}様の予約情報を削除してよろしいですか？" }, class: "btn btn-danger px-4 mx-3" %>
+          <%= f.submit yield(:button_text), class: "btn btn-primary px-4 mx-3" %>
         </span>
       </div><!-- /.modal-footer -->
+      <%= link_to "削除", user_reservation_path(@user, @reservation, from_page: "Users"), method: :delete,
+                data: { confirm: "#{@user.name}様の予約情報を削除してよろしいですか？" }, class: "float-right pr-3 pb-1" %>
     <% end %>
   </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
