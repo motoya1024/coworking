@@ -24,10 +24,18 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(customer_reservation_params)
     @usage_time = params[:usage_time].to_i
     @reservation.finished_at = @reservation.started_at+@usage_time.minutes
-    if @reservation.save
-      flash[:success] = "予約が完了しました。"
+    if @user.admin?
+      if @reservation.save
+        flash[:success] = "予約が完了しました。"
+      else
+        flash[:danger] = "予約ができませんでした。"
+      end
     else
-      flash[:danger] = "予約ができませんでした。"
+      if @reservation.save(context: :telmail)
+        flash[:success] = "予約が完了しました。"
+      else
+        flash[:danger] = "予約ができませんでした。"
+      end
     end
     redirect_to @user
   end
@@ -44,7 +52,7 @@ class ReservationsController < ApplicationController
     @update_reservation = Reservation.new(reservation_params)
     @reservation.finished_at = @update_reservation.started_at+@usage_time.minutes
     if @reservation.update_attributes(reservation_params)
-      flash[:success] = "#{@user.name}様の予約情報を更新しました。"
+      flash[:success] = "#{@reservation.telmail_name}様の予約情報を更新しました。"
     else
       flash[:danger] = "予約情報の更新は失敗しました。"
     end

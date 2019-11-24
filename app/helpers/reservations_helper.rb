@@ -10,6 +10,14 @@ module ReservationsHelper
     end
   end 
   
+  def get_reserved(current_user)
+    if current_user.admin?
+      "#DDDDDD"
+    else 
+      "#A4C6FF"
+    end
+  end
+  
   def get_height(started_at,finished_at,week_day)
     if Date.parse(started_at.to_s) == Date.parse(finished_at.to_s)
       time = ((finished_at - started_at)/60/60)

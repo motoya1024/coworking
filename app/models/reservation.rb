@@ -3,7 +3,7 @@ class Reservation < ApplicationRecord
   
   validates :started_at, presence: true
   validates :finished_at, presence: true
-  validates :telmail_name, presence: true, length: { maximum: 50 }
+  validates :telmail_name, presence: true, length: { maximum: 50 }, unless: -> { validation_context == :telmail }
   
   # 開始時間のみの更新は無効
   validate :only_started_at_or_only_finished_at_not_update

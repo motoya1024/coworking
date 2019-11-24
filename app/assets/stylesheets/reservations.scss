@@ -15,7 +15,6 @@
 
 .reservation_week_form_table{
   width:100%;
-  padding-right:15px;
   border-bottom:0.5px solid #AAAAAA;
 }
 
@@ -89,7 +88,6 @@ ul.time-field {
 .reserved{
   position:absolute;
   width:100%;
-  background-color:#DDDDDD;
   border-bottom: solid 1px #AAAAAA;
   font-size: 80%;
 }
@@ -135,9 +133,7 @@ ul.time-field {
 }
 
 @media screen and (max-device-width: 1024px) {
- .reservation_week_form_table{
-    padding-right:initial;
- }
+
  .week-day-td {
    &:last-child {
      border-right:none;
@@ -148,12 +144,6 @@ ul.time-field {
       border-right:none;
     }
  }
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-   _::-webkit-full-page-media, _:future, :root .reservation_week_form_table {
-        padding-right:15px;
-    }
 }
 
 @-moz-document url-prefix(){
