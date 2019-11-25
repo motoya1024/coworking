@@ -12,8 +12,6 @@
           <% if @user.admin == true%>
             <%= f.label "Name", class: "label-login col-sm-2 lead text-center mr-4 text-sm-right offset-sm-1" %>
             <%= f.text_field :telmail_name, class: 'form-control col-sm-6', value: @user.name %>
-          <% elsif @user.admin == false %>
-            <%= f.hidden_field :telmail_name, value: @user.name %>
           <% end %>
           <%= f.hidden_field :user_id, :value => @user.id %>
         </div>
@@ -43,7 +41,7 @@
           <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">
             キャンセル
           </button>
-          <%= f.submit yield(:button_text), class: "btn btn-primary px-4 mx-3" %>
+          <%= f.submit yield(:button_text), class: "btn btn-primary px-4 mx-3 disable" %>
         </span>
       </div><!-- /.modal-footer -->
     <% end %>
@@ -66,13 +64,13 @@
   function alert(now,date,two_month_date){
     if(now > date){
       $(".error-message").text("過去の時間は予約できません");
-      $(".disabled").attr('disabled', true);
+      $(".disable").attr('disabled', true);
     }else if(date > two_month_date){
       $(".error-message").text("２ヶ月先は予約できません");
-      $(".disabled").attr('disabled', true);
+      $(".disable").attr('disabled', true);
     }else{
       $(".error-message").text("");
-      $(".disabled").attr('disabled', false);
+      $(".disable").attr('disabled', false);
     }
   }
   $("#reservation_started_at_1i").change(function() {

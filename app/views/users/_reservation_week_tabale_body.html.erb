@@ -32,13 +32,18 @@
               <% top_position = get_position(reservation.started_at,reservation.finished_at,week_day) %>
               <% if current_user.admin? || (!current_user.admin && current_user.id == reservation.user_id) %>
                 <%= link_to(edit_user_reservation_url(@user,reservation),remote:true,class: 'text-color') do %>
-                  <div class="reserved text-center text-truncate" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
-                    <%= reservation.telmail_name %>様</br>
+                  <div class="reserved text-center text-truncate" 
+                       style="height:<%= reservation_height %>px; top:<%= top_position %>px; background-color:<%= get_reserved(current_user) %>;">
+                    <% if reservation.telmail_name != nil %>
+                      <%= reservation.telmail_name %>様</br>
+                    <% else %>
+                      <%= reservation.user.name %>様</br>
+                    <% end %>
                     <%= l(reservation.started_at,format: :time) %> ~ <%= l(reservation.finished_at,format: :time) %>
                   </div>
                 <% end %>
               <% else %>
-                <div class="reserved text-center" style="height:<%= reservation_height %>px; top:<%= top_position %>px;">
+                <div class="reserved text-center" style="height:<%= reservation_height %>px; top:<%= top_position %>px; background-color:#DDDDDD;">
                 </div>
               <% end %>
             <% end %>
